@@ -3,9 +3,9 @@ Manifest.txt
 PostInstall.txt
 README.rdoc
 Rakefile
-lib/staticmatic-core.rb
+lib/staticmatic.rb
 script/console
 script/destroy
 script/generate
 test/test_helper.rb
-test/test_staticmatic-core.rb
+test/test_staticmatic.rb

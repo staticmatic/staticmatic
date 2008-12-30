@@ -1,5 +1,5 @@
 
-For more information on staticmatic-core, see http://staticmatic-core.rubyforge.org
+For more information on staticmatic, see http://staticmatic.rubyforge.org
 
 NOTE: Change this information in PostInstall.txt 
 You can also delete it if you don't want it.

@@ -4,7 +4,7 @@ require 'test/unit'
 require 'active_support' 
 require 'shoulda'
 
-require File.dirname(__FILE__) + '/../lib/staticmatic-core'
+require File.dirname(__FILE__) + '/../lib/staticmatic'
 
 TEST_SITE_PATH = File.join(File.dirname(__FILE__), "sandbox", "test_site")
 
