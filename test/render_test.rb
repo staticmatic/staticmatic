@@ -25,6 +25,6 @@ class StaticMatic::RenderTest < Test::Unit::TestCase
   end
   
   should "find layout from passed path" do
-    assert_equal "projects", @staticmatic.detirmine_layout("test/projects")
+    assert_equal "projects", @staticmatic.determine_layout("test/projects")
   end
 end

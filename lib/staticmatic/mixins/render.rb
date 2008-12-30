@@ -19,13 +19,13 @@ module StaticMatic::RenderMixin
       end
       html = generate_html_from_template_source(File.read(full_file_path))
   
-      @layout = detirmine_layout(source_dir)
+      @layout = determine_layout(source_dir)
     rescue StaticMatic::Error => staticmatic_error
       # Catch any errors from the actual template - otherwise the error will be assumed to be from the
       # layout
       raise staticmatic_error
     rescue Haml::Error => haml_error
-      raise StaticMatic::Error.new(haml_error.line_offset, "#{source_dir}/#{source_file}", haml_error.message)
+      raise StaticMatic::Error.new(haml_error.line, "#{source_dir}/#{source_file}", haml_error.message)
     end
   
     # 
@@ -42,7 +42,7 @@ module StaticMatic::RenderMixin
     @current_file_stack.unshift(File.join(source_dir, "#{source}.haml"))
 
     template_content = generate_html(source, source_dir)
-    @layout = detirmine_layout(source_dir)
+    @layout = determine_layout(source_dir)
   
     begin
       generate_html_from_template_source(source_for_layout) { template_content }
@@ -110,7 +110,7 @@ module StaticMatic::RenderMixin
     html.render(@scope) { yield }
   end
 
-  def detirmine_layout(dir = '')
+  def determine_layout(dir = '')
     layout_name = "application"
   
     if @scope.instance_variable_get("@layout")
