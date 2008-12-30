@@ -9,6 +9,5 @@ require File.dirname(__FILE__) + '/../lib/staticmatic'
 TEST_SITE_PATH = File.join(File.dirname(__FILE__), "sandbox", "test_site")
 
 def setup_staticmatic
-  @base_dir = File.dirname(__FILE__) + '/sandbox/test_site'
-  @staticmatic = StaticMatic::Base.new(@base_dir)
+  @staticmatic = StaticMatic::Base.new(TEST_SITE_PATH)
 end

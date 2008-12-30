@@ -1,5 +1,3 @@
-require 'fileutils'
-
 module StaticMatic
   # Directories generated for a new site setup
   BASE_DIRS = %w{
@@ -29,8 +27,6 @@ module StaticMatic
     include StaticMatic::SetupMixin
     include StaticMatic::HelpersMixin    
     include StaticMatic::ServerMixin    
-    
-
     
     attr_accessor :configuration
     attr_reader :current_page, :src_dir, :site_dir

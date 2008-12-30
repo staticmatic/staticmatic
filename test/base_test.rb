@@ -5,7 +5,7 @@ class StaticMatic::BaseTest < Test::Unit::TestCase
     setup_staticmatic
   end
 
-  def test_initial_configuration_settings
+  should "set initial configuration settings" do
     assert_equal true, @staticmatic.configuration.use_extensions_for_page_links
     assert_equal 3000, @staticmatic.configuration.preview_server_port
   end

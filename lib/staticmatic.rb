@@ -2,6 +2,7 @@ require 'rubygems'
 require 'haml'
 require 'sass'
 require 'mongrel'
+require 'fileutils'
 
 module StaticMatic
   VERSION = '0.9.5'
