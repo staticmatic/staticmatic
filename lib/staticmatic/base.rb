@@ -46,7 +46,7 @@ module StaticMatic
       @base_dir = base_dir
       @src_dir = "#{@base_dir}/src"
       @site_dir = "#{@base_dir}/site"
-      @templates_dir = File.dirname(__FILE__) + '/templates'
+      @templates_dir = File.dirname(__FILE__) + '/templates/default/'
       @layout = "application"
       @scope = Object.new
       @scope.instance_variable_set("@staticmatic", self)
