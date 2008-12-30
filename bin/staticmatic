@@ -1,0 +1,23 @@
+#!/usr/bin/env ruby
+
+require File.dirname(__FILE__) + '/../lib/staticmatic'
+
+command = ARGV[0]
+directory = ARGV[1]
+
+if !command || !directory
+  puts "Usage: #{$0} <build|setup|preview> <directory>"
+  exit
+end
+
+configuration = StaticMatic::Configuration.new
+
+config_file = "#{directory}/src/configuration.rb"
+
+if File.exists?(config_file)
+  config = File.read(config_file)
+  eval(config)
+end
+
+staticmatic = StaticMatic::Base.new(directory, configuration)
+staticmatic.run(command)
