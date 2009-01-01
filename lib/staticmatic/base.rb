@@ -33,7 +33,7 @@ module StaticMatic
     attr_reader :current_page, :src_dir, :site_dir
 
     def current_file
-      @current_file_stack[0]
+      @current_file_stack[0] || ""
     end
     
     def initialize(base_dir, configuration = Configuration.new)

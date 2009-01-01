@@ -1,4 +1,4 @@
-class StaticMatic::TemplateError
+class StaticMatic::TemplateError < StandardError
   SOURCE_CODE_RADIUS = 3
   
   attr_reader :original_exception, :backtrace

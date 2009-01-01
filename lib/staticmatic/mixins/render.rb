@@ -1,4 +1,5 @@
 module StaticMatic::RenderMixin
+  
   def source_for_layout
     if layout_exists?(@layout)
       File.read(full_layout_path(@layout))
@@ -20,34 +21,24 @@ module StaticMatic::RenderMixin
       html = generate_html_from_template_source(File.read(full_file_path))
   
       @layout = determine_layout(source_dir)
+    rescue StaticMatic::TemplateError => e
+      raise e # re-raise inline errors
     rescue Exception => e
-      html = render_rescue_from_error(StaticMatic::TemplateError.new(full_file_path, e))
+      raise StaticMatic::TemplateError.new(full_file_path, e)
     end
-  
-    # 
-    # # TODO: DRY this up
-    # if @scope.instance_variable_get("@layout")
-    #   @layout = @scope.instance_variable_get("@layout")
-    # end
-    # 
+
     html
   end
 
   def generate_html_with_layout(source, source_dir = '')
     @current_page = File.join(source_dir, "#{source}.html")
     @current_file_stack.unshift(File.join(source_dir, "#{source}.haml"))
-
-    template_content = generate_html(source, source_dir)
-    @layout = determine_layout(source_dir)
-  
-    begin
+    begin 
+      template_content = generate_html(source, source_dir)
+      @layout = determine_layout(source_dir)
       generate_html_from_template_source(source_for_layout) { template_content }
-    rescue StaticMatic::Error => staticmatic_error
-      # Catch any errors from the actual template - otherwise the error will be assumed to be from the
-      # layout
-      raise staticmatic_error
-    rescue Haml::Error => haml_error
-      raise StaticMatic::Error.new("", "Layout: #{source_dir}/#{@layout}", haml_error.message)
+    rescue Exception => e
+      render_rescue_from_error(e)
     ensure
       @current_page = nil
       @current_file_stack.shift
@@ -62,7 +53,8 @@ module StaticMatic::RenderMixin
     partial_path = File.join(@src_dir, 'pages', partial_dir, partial_name)
     unless File.exists?(partial_path)
       # couldn't find it in the pages subdirectory tree so try old way (ignoring the path)
-      partial_dir = 'partials'; partial_name = "#{File.basename(name)}.haml"
+      partial_dir = 'partials'
+      partial_name = "#{File.basename(name)}.haml"
       partial_path = File.join(@src_dir, partial_dir, partial_name)
     end
   
@@ -71,8 +63,8 @@ module StaticMatic::RenderMixin
       @current_file_stack.unshift(partial_rel_path)
       begin
         generate_html_from_template_source(File.read(partial_path), options)
-      rescue Haml::Error => haml_error
-        raise StaticMatic::Error.new(haml_error.haml_line, "Partial: #{partial_rel_path[0,partial_rel_path.length-5]}", haml_error.message)
+      rescue Exception => e
+        raise StaticMatic::TemplateError.new(partial_path, e)
       ensure
         @current_file_stack.shift
       end

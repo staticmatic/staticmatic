@@ -1,13 +1,18 @@
-%h1
-  = @exception.class.name
-  in
-  = @exception.filename
+%html
+  %head
+    %style{:type => "text/css"}
+      body { font-family: helvetica, verdana, arial; font-size: 10pt;}
+  %body
+    %h1
+      = @exception.class.name
+      in
+      = @exception.filename
 
-%p= @exception.original_exception.message
+    %p= @exception.original_exception.message
   
-= @exception.source_extract.gsub(/\n/, "<br/>")
+    = @exception.source_extract.gsub(/\n/, "<br/>")
 
 
-%h2 Stack Trace
+    %h2 Backtrace
 
-= @exception.backtrace.join("<br/>")
+    = @exception.backtrace.join("<br/>")

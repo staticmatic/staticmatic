@@ -4,12 +4,12 @@ require File.dirname(__FILE__) + '/lib/staticmatic'
 # Generate all the Rake tasks
 # Run 'rake -T' to see list of generated tasks (from gem root directory)
 $hoe = Hoe.new('staticmatic', StaticMatic::VERSION) do |p|
-  p.developer('FIXME full name', 'FIXME email')
-  #p.changes              = p.paragraphs_of("History.txt", 0..1).join("\n\n")
-  p.rubyforge_name       = p.name # TODO this is default value
-  # p.extra_deps         = [
-  #   ['activesupport','>= 2.0.2'],
-  # ]
+  p.developer('Stephen Bartholomew', 'steve@curve21.com')
+  p.rubyforge_name       = p.name 
+  p.extra_deps         = [
+    ['haml','>= 2.0'],
+    ['mongrel','>= 1.0']
+  ]
   p.extra_dev_deps = [
     ['newgem', ">= #{::Newgem::VERSION}"]
   ]
