@@ -9,7 +9,6 @@ module StaticMatic
     src/pages/
     src/layouts
     src/stylesheets
-    src/partials
     src/helpers
   }
 
