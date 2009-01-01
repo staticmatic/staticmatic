@@ -5,7 +5,7 @@ require 'mongrel'
 require 'fileutils'
 
 module StaticMatic
-  VERSION = '0.9.6'
+  VERSION = '0.10.0'
 end
 
 ["render", "build", "setup", "server", "helpers", "rescue"].each do |mixin|

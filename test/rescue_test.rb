@@ -22,4 +22,15 @@ class StaticMatic::RescueTest < Test::Unit::TestCase
       assert_match /partials\/partial_with_error/, template_error.filename
     end
   end
+  
+  should "handle non-template errors" do
+    begin
+      raise Exception.new("This is an exception")
+    rescue Exception => e
+      output = @staticmatic.render_rescue_from_error(e)
+    end
+    
+    assert_match /Exception/, output
+    assert_match /This is an exception/, output
+  end
 end
