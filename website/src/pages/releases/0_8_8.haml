@@ -1,0 +1,35 @@
+%h1 StaticMatic 0.8.8
+
+%h2 Helpers
+
+%p Thanks to Craig Webster, we now have Rails-style helpers.  
+
+src/application_helper.rb:
+
+:preserve
+  <pre class="code">
+  module ApplicationHelper
+    def greet(name)
+       "Hello, #{name}!"
+    end
+  end
+  </pre>
+
+%h2 Configuration
+
+%p We also now have configuration.  It's only basic right now but expect this to expand.
+
+src/configuration.rb:
+
+.code
+  configuration.preview_server_port = 3000
+  configuration.use_relative_paths_for_links = false
+  configuration.use_relative_paths_for_images = false
+  configuration.use_relative_paths_for_stylesheets = false
+  configuration.use_relative_paths_for_javascripts = false
+  
+%p The configuration file is also loaded before StaticMatic starts so it can be used to monkey-patch to demonstrate new features.
+
+%p
+  See what changed in 
+  = link '0.8.4', '/releases/0_8_4.html'

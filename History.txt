@@ -1,5 +1,6 @@
-== 0.9.6 2009-01-01
+== 0.10.0 2009-01-01
 
 * Refactoring for forthcoming improvements
 * Improved Error Reporting
-	* 
+	* More useful error pages
+	* Removed Haml specific error handling

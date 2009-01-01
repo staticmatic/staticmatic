@@ -1,0 +1,25 @@
+%h1 StaticMatic 0.8.4 
+
+%p Don't be fooled by the small minor increments - there's loads of great stuff in the latest release:
+
+%h2 Sub-Directory Support
+%p Thanks to Brent Beardsley, you can now have as many directories as you like.  This should be considered 'beta' at the moment as there is likely to be issues with paths in the helpers, but try it out and we'll figure out the best solution.
+
+%h2 Partials! 
+%p 
+  Simply create a 'partials' directory in your src/ and you'll be able to do: 
+  .code partial("partial_name")
+
+%h2 Layouts based on directory
+%p Along with sub-directory support, you can also create layouts based on the sub-directory a template is in.  For example, if you have a 'projects' directory and would like it to render a different template, simply create 'projects.haml' in your layouts directory.
+
+%h2 Relative Stylesheet Linking
+%p 
+  You can now tell the stylesheet helper to use relative linking:
+  .code = stylesheets :relative => true
+  
+%p
+  %em Note that you may get issues with nested directories and relative stylesheets
+
+%h2 What's Next?
+%p The main things on the list are configuration and clearing up any bugs not yet sorted.  It'd also be great to start extending the test set more.

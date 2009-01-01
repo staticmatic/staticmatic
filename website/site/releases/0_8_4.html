@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
+  <head>
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type' />
+    <title>StaticMatic</title>
+    <link href="../stylesheets/application.css" media="all" rel="stylesheet" type="text/css"/>
+    <link href="../stylesheets/application.css" media="screen" rel="stylesheet" type="text/css"/>
+  </head>
+  <body>
+    <div id='container'>
+      <div id='header'>
+        <div class='bycurve21'><a href="http://www.curve21.com"><img alt="Bycurve21" src="../images/bycurve21.gif"/></a></div>
+        <div class='title'>StaticMatic</div>
+      </div>
+      <div id='menu'>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="../download.html">Download</a></li>
+          <li><a href="../how_to_use.html">How to use</a></li>
+          <li><a href="../faq.html">FAQ</a></li>
+          <li><a href="http://groups.google.co.uk/group/staticmatic">Community</a></li>
+          <li><a href="../helper_central/">Helper Central</a></li>
+          <li><a href="http://rubyforge.org/projects/staticmatic">Development</a></li>
+        </ul>
+      </div>
+      <div id='content_wrapper'>
+        <div id='side'>
+          <div id='news'>
+            <div class='heading'>News</div>
+            <div class='title'>0.10.0 Released!</div>
+            <p>This release brings some major improvements to error reporting as well as preparation for forthcoming improvements.</p>
+            <a href="/releases/0_10_0.html">And More!</a>
+          </div>
+        </div>
+        <div id='content'>
+          <h1>StaticMatic 0.8.4</h1>
+          <p>Don't be fooled by the small minor increments - there's loads of great stuff in the latest release:</p>
+          <h2>Sub-Directory Support</h2>
+          <p>Thanks to Brent Beardsley, you can now have as many directories as you like.  This should be considered 'beta' at the moment as there is likely to be issues with paths in the helpers, but try it out and we'll figure out the best solution.</p>
+          <h2>Partials!</h2>
+          <p>
+            Simply create a 'partials' directory in your src/ and you'll be able to do:
+            <div class='code'>partial("partial_name")</div>
+          </p>
+          <h2>Layouts based on directory</h2>
+          <p>Along with sub-directory support, you can also create layouts based on the sub-directory a template is in.  For example, if you have a 'projects' directory and would like it to render a different template, simply create 'projects.haml' in your layouts directory.</p>
+          <h2>Relative Stylesheet Linking</h2>
+          <p>
+            You can now tell the stylesheet helper to use relative linking:
+            <div class='code'>= stylesheets :relative => true</div>
+          </p>
+          <p>
+            <em>Note that you may get issues with nested directories and relative stylesheets</em>
+          </p>
+          <h2>What's Next?</h2>
+          <p>The main things on the list are configuration and clearing up any bugs not yet sorted.  It'd also be great to start extending the test set more.</p>
+        </div>
+      </div>
+      <div id='footer'>
+        <p>
+          Made with StaticMatic
+          0.10.0
+          , Hosted by
+          <a href="http://rubyforge.org">RubyForge</a>
+        </p>
+      </div>
+      <script src='http://www.google-analytics.com/urchin.js' type='text/javascript'>
+        _hamlspace = "";
+      </script>
+      <script type='text/javascript'>
+        _uacct = "UA-775359-8";
+        urchinTracker();
+      </script>
+    </div>
+  </body>
+</html>

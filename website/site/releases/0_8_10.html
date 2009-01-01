@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
+  <head>
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type' />
+    <title>StaticMatic</title>
+    <link href="../stylesheets/application.css" media="all" rel="stylesheet" type="text/css"/>
+    <link href="../stylesheets/application.css" media="screen" rel="stylesheet" type="text/css"/>
+  </head>
+  <body>
+    <div id='container'>
+      <div id='header'>
+        <div class='bycurve21'><a href="http://www.curve21.com"><img alt="Bycurve21" src="../images/bycurve21.gif"/></a></div>
+        <div class='title'>StaticMatic</div>
+      </div>
+      <div id='menu'>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="../download.html">Download</a></li>
+          <li><a href="../how_to_use.html">How to use</a></li>
+          <li><a href="../faq.html">FAQ</a></li>
+          <li><a href="http://groups.google.co.uk/group/staticmatic">Community</a></li>
+          <li><a href="../helper_central/">Helper Central</a></li>
+          <li><a href="http://rubyforge.org/projects/staticmatic">Development</a></li>
+        </ul>
+      </div>
+      <div id='content_wrapper'>
+        <div id='side'>
+          <div id='news'>
+            <div class='heading'>News</div>
+            <div class='title'>0.10.0 Released!</div>
+            <p>This release brings some major improvements to error reporting as well as preparation for forthcoming improvements.</p>
+            <a href="/releases/0_10_0.html">And More!</a>
+          </div>
+        </div>
+        <div id='content'>
+          <h1>StaticMatic 0.8.10</h1>
+          <h2>What's New</h2>
+          <ul>
+            <li>[NEW] rails-like partials.  Partials can start with an underscore and live in the pages directory tree, old way still works (Brent Beardsley)</li>
+            <li>[NEW] added current_page helper for use in other helpers, layouts, or pages (Brent Beardsley)</li>
+            <li>[NEW] add src_dir, site_dir, and current_page attr_reader's on staticmatic class (Brent Beardsley)</li>
+          </ul>
+          <h2>What's Fixed</h2>
+          <ul>
+            <li>[FIX] img helper changes and tests (Jason Tennier)</li>
+            <li>[FIX] removed dependency on rails needing to be installed (Brent Beardsley)</li>
+            <li>[FIX] fixed preview bug where setting a layout in a page would cause it to be used even for pages that did not have a layout specified and should be using the default (Brent Beardsley)</li>
+            <li>[FIX] tag helper only outputs the attribute if it has a value (Brent Beardsley)</li>
+            <li>[FIX] renamed RakeFile to Rakefile so it'll work on non-windows boxes (Brent Beardsley)</li>
+            <li>[FIX] write tag helper attributes out in alphabetical order for consistency (Brent Beardsley)</li>
+          </ul>
+          <p>
+            See what changed in
+            <a href="/releases/0_8_8.html">0.8.8</a>
+          </p>
+        </div>
+      </div>
+      <div id='footer'>
+        <p>
+          Made with StaticMatic
+          0.10.0
+          , Hosted by
+          <a href="http://rubyforge.org">RubyForge</a>
+        </p>
+      </div>
+      <script src='http://www.google-analytics.com/urchin.js' type='text/javascript'>
+        _hamlspace = "";
+      </script>
+      <script type='text/javascript'>
+        _uacct = "UA-775359-8";
+        urchinTracker();
+      </script>
+    </div>
+  </body>
+</html>

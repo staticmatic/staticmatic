@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
+  <head>
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type' />
+    <title>StaticMatic</title>
+    <link href="../stylesheets/application.css" media="all" rel="stylesheet" type="text/css"/>
+    <link href="../stylesheets/application.css" media="screen" rel="stylesheet" type="text/css"/>
+  </head>
+  <body>
+    <div id='container'>
+      <div id='header'>
+        <div class='bycurve21'><a href="http://www.curve21.com"><img alt="Bycurve21" src="../images/bycurve21.gif"/></a></div>
+        <div class='title'>StaticMatic</div>
+      </div>
+      <div id='menu'>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="../download.html">Download</a></li>
+          <li><a href="../how_to_use.html">How to use</a></li>
+          <li><a href="../faq.html">FAQ</a></li>
+          <li><a href="http://groups.google.co.uk/group/staticmatic">Community</a></li>
+          <li><a href="../helper_central/">Helper Central</a></li>
+          <li><a href="http://rubyforge.org/projects/staticmatic">Development</a></li>
+        </ul>
+      </div>
+      <div id='content_wrapper'>
+        <div id='side'>
+          <div id='news'>
+            <div class='heading'>News</div>
+            <div class='title'>0.10.0 Released!</div>
+            <p>This release brings some major improvements to error reporting as well as preparation for forthcoming improvements.</p>
+            <a href="/releases/0_10_0.html">And More!</a>
+          </div>
+        </div>
+        <div id='content'>
+          <h1>StaticMatic 0.9.0</h1>
+          <p>
+            The biggest change is that
+            <span class='highlight'>all the "local" links generated (pages/stylesheets/images) are relative</span>
+            now that we know the current page.  So the
+            use_relative_path_for_* configuration settings were removed.
+            <span class='highlight'>This will cause your configuration.rb to blow up unless you remove them.</span>
+          </p>
+          <h2>What's New</h2>
+          <ul>
+            <li>added StaticMatic::VERSION.requirements_met?</li>
+            <li>added LICENSE and CHANGELOG files</li>
+            <li>can now specify relative paths when only specifying a title - link("../other/How to download")</li>
+            <li>add src_dir/stylesheets directory to sass load path so you can use @import styles.sass</li>
+            <li>added sass_options hash to configuration so you can configure sass (ie: :style => :compact)</li>
+            <li>added configuration.use_extensions_for_page_links (defaults to true) when false will strip index.html and .html off the end of links for pretty urls</li>
+            <li>made all "local" links (pages/stylesheets/images) relative to the current page and removed use_relative_path_for_* configuration settings</li>
+            <li>stylesheets helper can now take a list of stylesheets to include and the order as well as options (ie: :media => :print)</li>
+            <li>added clean and clobber tasks to Rakefile</li>
+            <li>added StaticMatic::VERSION in version.rb</li>
+            <li>added package task to Rakefile and made it the default</li>
+          </ul>
+          <h2>What's Fixed</h2>
+          <ul>
+            <li>clear all instance variables in @scope except @staticmatic</li>
+            <li>no longer add \n after the tag in the tag helper</li>
+            <li>mailto: links were getting a / inserted in front of the mailto:</li>
+          </ul>
+          <p>
+            See what changed in
+            <a href="/releases/0_8_10.html">0.8.10</a>
+          </p>
+        </div>
+      </div>
+      <div id='footer'>
+        <p>
+          Made with StaticMatic
+          0.10.0
+          , Hosted by
+          <a href="http://rubyforge.org">RubyForge</a>
+        </p>
+      </div>
+      <script src='http://www.google-analytics.com/urchin.js' type='text/javascript'>
+        _hamlspace = "";
+      </script>
+      <script type='text/javascript'>
+        _uacct = "UA-775359-8";
+        urchinTracker();
+      </script>
+    </div>
+  </body>
+</html>

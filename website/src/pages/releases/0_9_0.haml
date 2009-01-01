@@ -1,0 +1,34 @@
+%h1 StaticMatic 0.9.0
+
+%p
+  The biggest change is that 
+  %span.highlight all the "local" links generated (pages/stylesheets/images) are relative 
+  now that we know the current page.  So the
+  use_relative_path_for_* configuration settings were removed.  
+  %span.highlight This will cause your configuration.rb to blow up unless you remove them.
+
+%h2 What's New
+
+%ul
+  %li added StaticMatic::VERSION.requirements_met?
+  %li added LICENSE and CHANGELOG files 
+  %li can now specify relative paths when only specifying a title - link("../other/How to download") 
+  %li add src_dir/stylesheets directory to sass load path so you can use @import styles.sass 
+  %li added sass_options hash to configuration so you can configure sass (ie: :style => :compact) 
+  %li added configuration.use_extensions_for_page_links (defaults to true) when false will strip index.html and .html off the end of links for pretty urls 
+  %li made all "local" links (pages/stylesheets/images) relative to the current page and removed use_relative_path_for_* configuration settings 
+  %li stylesheets helper can now take a list of stylesheets to include and the order as well as options (ie: :media => :print) 
+  %li added clean and clobber tasks to Rakefile 
+  %li added StaticMatic::VERSION in version.rb 
+  %li added package task to Rakefile and made it the default 
+
+%h2 What's Fixed
+
+%ul
+  %li clear all instance variables in @scope except @staticmatic 
+  %li no longer add \n after the tag in the tag helper 
+  %li mailto: links were getting a / inserted in front of the mailto: 
+
+%p
+  See what changed in 
+  = link('0.8.10', '/releases/0_8_10.html')

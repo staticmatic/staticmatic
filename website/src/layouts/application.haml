@@ -1,0 +1,43 @@
+!!!
+%html{ :xmlns => "http://www.w3.org/1999/xhtml", :lang => "en", 'xml:lang' => "en" }
+  %head
+    %meta{"http-equiv"=>"Content-Type", :content=>"text/html; charset=utf-8"}
+    %title StaticMatic
+    = stylesheets
+    = stylesheets :reset, :application, :media => :screen
+  %body
+    #container
+      #header
+        .bycurve21= link(img("bycurve21.gif"), "http://www.curve21.com")
+        .title StaticMatic
+
+      #menu
+
+        %ul
+          %li= link "Home", "/"
+          %li= link "Download"
+          %li= link "How to use"
+          %li= link "FAQ"
+          %li= link "Community", "http://groups.google.co.uk/group/staticmatic"
+          %li= link "Helper Central", "helper_central/"
+          %li= link "Development", "http://rubyforge.org/projects/staticmatic"
+      #content_wrapper
+        #side
+          #news= partial("news")
+
+        #content
+          = yield
+      
+      #footer
+        %p 
+          Made with StaticMatic
+          = StaticMatic::VERSION
+          \, Hosted by 
+          = link "RubyForge", "http://rubyforge.org"
+      
+      %script{:src => "http://www.google-analytics.com/urchin.js", :type => "text/javascript"}
+        _hamlspace = "";
+      %script{:type => "text/javascript"}
+        _uacct = "UA-775359-8";
+        urchinTracker();
+      

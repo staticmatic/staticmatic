@@ -1,0 +1,21 @@
+%h1 Helper Central
+
+%p
+  This is a place where nifty helpers not accepted into core can be found.  
+  %span.highlight Use them at your own risk.  StaticMatic core developers are not responsible for these helpers or their results.
+  %br
+  %br
+  Helpers are listed in alphabetical order.  
+
+%table{:border => '0'}
+  %tr
+    %th Name
+    %th Description
+    %th Author
+    %th Download
+  =partial('helper', :locals => { :title => 'Blueprint Css', :author => 'Brent Beardsley', :description => 'Easily include blueprint css framework files and plugins', :download_link => 'http://staticmatic.rubyforge.org/svn/trunk/contrib/helpers/blueprintcss_helper.rb', :id => 'blueprintcss_helper' })
+  =partial('helper', :locals => { :title => 'Google Analytics', :author => 'Brent Beardsley', :description => 'Easily include google analytics javascript code using http or https', :download_link => 'http://staticmatic.rubyforge.org/svn/trunk/contrib/helpers/google_analytics_helper.rb', :id => 'google_analytics_helper' })
+  =partial('helper', :locals => { :title => 'Menubar', :author => 'Brent Beardsley', :description => 'Easily create a menubar using an unordered list', :download_link => 'http://staticmatic.rubyforge.org/svn/trunk/contrib/helpers/menubar_helper.rb', :id => 'menubar_helper' })
+  =partial('helper', :locals => { :title => 'Navigation', :author => 'Andrew Neil', :description => 'Easily create breadcrumbs, sitemaps, and menus.', :download_link => 'http://staticmatic.rubyforge.org/svn/trunk/contrib/helpers/navigation_helper.rb', :id => 'navigation_helper' })
+  =partial('helper', :locals => { :title => 'Rss List', :author => 'Brent Beardsley', :description => 'Easily create an unordered list from an rss feed. Special helpers for delicious, flickr, ebay, magnolia, and twitter.', :download_link => 'http://staticmatic.rubyforge.org/svn/trunk/contrib/helpers/rss_list_helper.rb', :id => 'rss_list_helper' })
+         
