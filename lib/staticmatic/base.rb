@@ -27,7 +27,8 @@ module StaticMatic
     include StaticMatic::SetupMixin
     include StaticMatic::HelpersMixin    
     include StaticMatic::ServerMixin    
-    
+    include StaticMatic::RescueMixin    
+  
     attr_accessor :configuration
     attr_reader :current_page, :src_dir, :site_dir
 

@@ -1,0 +1,13 @@
+%h1
+  = @exception.class.name
+  in
+  = @exception.filename
+
+%p= @exception.original_exception.message
+  
+= @exception.source_extract.gsub(/\n/, "<br/>")
+
+
+%h2 Stack Trace
+
+= @exception.backtrace.join("<br/>")

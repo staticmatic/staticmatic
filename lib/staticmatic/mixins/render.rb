@@ -8,7 +8,7 @@ module StaticMatic::RenderMixin
   end
 
   # Generate html from source file:
-  # generate_html("index.haml")
+  # generate_html("index")
   def generate_html(source_file, source_dir = '')
     full_file_path = File.join(@src_dir, 'pages', source_dir, "#{source_file}.haml")
 
@@ -20,12 +20,8 @@ module StaticMatic::RenderMixin
       html = generate_html_from_template_source(File.read(full_file_path))
   
       @layout = determine_layout(source_dir)
-    rescue StaticMatic::Error => staticmatic_error
-      # Catch any errors from the actual template - otherwise the error will be assumed to be from the
-      # layout
-      raise staticmatic_error
-    rescue Haml::Error => haml_error
-      raise StaticMatic::Error.new(haml_error.line, "#{source_dir}/#{source_file}", haml_error.message)
+    rescue Exception => e
+      html = render_rescue_from_error(StaticMatic::TemplateError.new(full_file_path, e))
     end
   
     # 
@@ -91,8 +87,8 @@ module StaticMatic::RenderMixin
       sass_options = { :load_paths => [ File.join(@src_dir, 'stylesheets') ] }.merge(self.configuration.sass_options)
       stylesheet = Sass::Engine.new(File.read(full_file_path), sass_options)
       stylesheet.to_css
-    rescue Sass::SyntaxError => sass_error
-      raise StaticMatic::Error.new(sass_error.sass_line, full_file_path, sass_error.message)
+    rescue Exception => e
+      render_rescue_from_error(StaticMatic::TemplateError.new(full_file_path, e))
     end
   end
 
@@ -106,7 +102,7 @@ module StaticMatic::RenderMixin
   #
   def generate_html_from_template_source(source, options = {})
     html = Haml::Engine.new(source, options)
-
+    
     html.render(@scope) { yield }
   end
 
