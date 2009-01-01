@@ -12,7 +12,7 @@ end
   require File.join(File.dirname(__FILE__), "staticmatic", "mixins", mixin)
 end
 
-["base", "configuration", "error", "server", "helpers", "template"].each do |lib|
+["base", "configuration", "error", "server", "helpers"].each do |lib|
   require File.join(File.dirname(__FILE__), "staticmatic", lib)
 end
 
