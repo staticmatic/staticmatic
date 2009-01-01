@@ -1,4 +1,7 @@
 .DS_Store
 coverage
 pkg
-
+website/*.html
+website/stylesheets/*.css
+website/releases/
+website/helper_central
