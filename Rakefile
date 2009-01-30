@@ -5,6 +5,7 @@ require File.dirname(__FILE__) + '/lib/staticmatic'
 # Run 'rake -T' to see list of generated tasks (from gem root directory)
 $hoe = Hoe.new('staticmatic', StaticMatic::VERSION) do |p|
   p.developer('Stephen Bartholomew', 'steve@curve21.com')
+  p.summary = "Lightweight Static Site Framework"
   p.rubyforge_name       = p.name 
   p.extra_deps         = [
     ['haml','>= 2.0'],
@@ -16,7 +17,7 @@ $hoe = Hoe.new('staticmatic', StaticMatic::VERSION) do |p|
   
   p.clean_globs |= %w[**/.DS_Store tmp *.log]
   path = (p.rubyforge_name == p.name) ? p.rubyforge_name : "\#{p.rubyforge_name}/\#{p.name}"
-  p.remote_rdoc_dir = File.join(path.gsub(/^#{p.rubyforge_name}\/?/,''), 'rdoc')
+  p.remote_rdoc_dir = File.join(path.gsub(/^#{p.rubyforge_name}\/?/,''), 'markdown')
   p.rsync_args = '-av --delete --ignore-errors'
 end
 

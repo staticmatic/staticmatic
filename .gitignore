@@ -1,6 +1,7 @@
 .DS_Store
 coverage
 pkg
+test/sandbox/test_site/site/*
 website/*.html
 website/stylesheets/*.css
 website/releases/
