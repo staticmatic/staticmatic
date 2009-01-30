@@ -2,7 +2,6 @@
 coverage
 pkg
 test/sandbox/test_site/site/*
-website/*.html
-website/stylesheets/*.css
-website/releases/
-website/helper_central
+website/site/*.html
+website/site/releases/
+website/site/helper_central
