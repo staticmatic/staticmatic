@@ -94,8 +94,8 @@ module StaticMatic::RenderMixin
   #
   def generate_html_from_template_source(source, options = {})
     html = Haml::Engine.new(source, self.configuration.haml_options.merge(options))
-    
-    html.render(@scope, options) { yield }
+    locals = options[:locals] || {}
+    html.render(@scope, locals) { yield }
   end
 
   def determine_layout(dir = '')
