@@ -13,6 +13,8 @@ begin
     gem.homepage = "http://staticmatic.net"
     gem.description = "Lightweight Static Site Framework"
     gem.authors = ["Stephen Bartholomew"]
+    gem.rubyforge_project = "staticmatic"
+    
     gem.files =  FileList["[A-Z]*", "{bin,lib,test}/**/*"]
     
     gem.add_dependency("haml", ">=2.0.0")
