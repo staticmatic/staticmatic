@@ -1,29 +1,26 @@
-%w[rubygems rake rake/clean fileutils newgem rubigen].each { |f| require f }
+require "rubygems"
+require "rake"
+require "rake/testtask"
 require File.dirname(__FILE__) + '/lib/staticmatic'
 
-# Generate all the Rake tasks
-# Run 'rake -T' to see list of generated tasks (from gem root directory)
-$hoe = Hoe.new('staticmatic', StaticMatic::VERSION) do |p|
-  p.developer('Stephen Bartholomew', 'steve@curve21.com')
-  p.summary = "Lightweight Static Site Framework"
-  p.rubyforge_name       = p.name 
-  p.extra_deps         = [
-    ['haml','>= 2.0'],
-    ['mongrel','>= 1.0']
-  ]
-  p.extra_dev_deps = [
-    ['newgem', ">= #{::Newgem::VERSION}"]
-  ]
-  
-  p.clean_globs |= %w[**/.DS_Store tmp *.log]
-  path = (p.rubyforge_name == p.name) ? p.rubyforge_name : "\#{p.rubyforge_name}/\#{p.name}"
-  p.remote_rdoc_dir = File.join(path.gsub(/^#{p.rubyforge_name}\/?/,''), 'markdown')
-  p.rsync_args = '-av --delete --ignore-errors'
+begin
+  require 'jeweler'
+  Jeweler::Tasks.new do |gem|
+    gem.name = "staticmatic"
+    gem.executables = "staticmatic"
+    gem.summary = "Lightweight Static Site Framework"
+    gem.email = "steve@curve21.com"
+    gem.homepage = "http://staticmatic.net"
+    gem.description = "Lightweight Static Site Framework"
+    gem.authors = ["Stephen Bartholomew"]
+    gem.files =  FileList["[A-Z]*", "{bin,lib,test}/**/*"]
+    
+    gem.add_dependency("haml", ">=2.0.0")
+    gem.add_dependency("mongrel", ">=1.1.5")
+  end
+rescue LoadError
+  puts "Jeweler, or one of its dependencies, is not available. Install it with: sudo gem install technicalpickles-jeweler -s http://gemgem.github.com"
 end
-
-require 'newgem/tasks' # load /tasks/*.rake
-Dir['tasks/**/*.rake'].each { |t| load t }
-
 
 desc "Run all unit tests"
 Rake::TestTask.new(:test) do |t|
