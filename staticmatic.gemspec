@@ -76,6 +76,7 @@ Gem::Specification.new do |s|
   s.homepage = %q{http://staticmatic.net}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
+  s.rubyforge_project = %q{staticmatic}
   s.rubygems_version = %q{1.3.1}
   s.summary = %q{Lightweight Static Site Framework}
   s.test_files = [
