@@ -16,7 +16,7 @@ module StaticMatic::RenderMixin
     begin
       # clear all scope variables except @staticmatic
       @scope.instance_variables.each do |var|
-        @scope.instance_variable_set(var, nil) unless var == '@staticmatic' 
+        @scope.instance_variable_set(var, nil) unless var == ('@staticmatic' || :@staticmatic) 
       end
       html = generate_html_from_template_source(File.read(full_file_path))
   
