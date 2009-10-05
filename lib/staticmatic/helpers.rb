@@ -40,10 +40,16 @@ module StaticMatic
         end
 
         stylesheet_directories.each do |path|
+          
           filename_without_extension = File.basename(path).chomp(File.extname(path))
-
-          options[:href] = "#{relative_path}stylesheets/#{filename_without_extension}.css"
-          output << tag(:link, options)
+          
+          if !filename_without_extension.match(/^\_/)
+            relative_path = path.gsub(/#{@staticmatic.base_dir}\/(src|site)\//, "").
+                                 gsub(/#{filename_without_extension}\.(sass|css)/, "")
+          
+            options[:href] = "#{relative_path}#{filename_without_extension}.css"
+            output << tag(:link, options)
+          end
         end
       else
         #specific files requested and in a specific order
