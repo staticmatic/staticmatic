@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{staticmatic}
-  s.version = "0.10.2"
+  s.version = "0.10.4"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Stephen Bartholomew"]
-  s.date = %q{2009-09-20}
+  s.date = %q{2009-10-05}
   s.default_executable = %q{staticmatic}
   s.description = %q{Lightweight Static Site Framework}
   s.email = %q{steve@curve21.com}
@@ -42,38 +42,40 @@ Gem::Specification.new do |s|
      "lib/staticmatic/templates/default/index.haml",
      "lib/staticmatic/templates/rescues/default.haml",
      "lib/staticmatic/templates/rescues/template.haml",
-     "test/base_test.rb",
-     "test/helpers_test.rb",
-     "test/render_test.rb",
-     "test/rescue_test.rb",
-     "test/sandbox/test_site/configuration.rb",
-     "test/sandbox/test_site/site/index",
-     "test/sandbox/test_site/site/index.html",
-     "test/sandbox/test_site/site/layout_test",
-     "test/sandbox/test_site/site/page_with_error",
-     "test/sandbox/test_site/site/page_with_partial_error",
-     "test/sandbox/test_site/site/stylesheets/application.css",
-     "test/sandbox/test_site/site/sub_folder/another_sub_folder.",
-     "test/sandbox/test_site/site/sub_folder/another_sub_folder/index.html",
-     "test/sandbox/test_site/site/sub_folder/another_sub_folder/index.html.html",
-     "test/sandbox/test_site/site/sub_folder/index.html",
-     "test/sandbox/test_site/src/helpers/application_helper.rb",
-     "test/sandbox/test_site/src/layouts/alternate_layout.haml",
-     "test/sandbox/test_site/src/layouts/application.haml",
-     "test/sandbox/test_site/src/layouts/projects.haml",
-     "test/sandbox/test_site/src/pages/hello_world.erb",
-     "test/sandbox/test_site/src/pages/index.haml",
-     "test/sandbox/test_site/src/pages/layout_test.haml",
-     "test/sandbox/test_site/src/pages/page_with_error.haml",
-     "test/sandbox/test_site/src/pages/page_with_partial_error.haml",
-     "test/sandbox/test_site/src/partials/menu.haml",
-     "test/sandbox/test_site/src/partials/partial_with_error.haml",
-     "test/sandbox/test_site/src/stylesheets/application.sass",
-     "test/sandbox/test_site/src/stylesheets/css_with_error.sass",
-     "test/server_test.rb",
-     "test/setup_test.rb",
-     "test/template_error_test.rb",
-     "test/spec_helper.rb"
+     "spec/base_spec.rb",
+     "spec/helpers_spec.rb",
+     "spec/render_spec.rb",
+     "spec/rescue_spec.rb",
+     "spec/sandbox/test_site/configuration.rb",
+     "spec/sandbox/test_site/site/index",
+     "spec/sandbox/test_site/site/index.html",
+     "spec/sandbox/test_site/site/layout_test",
+     "spec/sandbox/test_site/site/page_with_error",
+     "spec/sandbox/test_site/site/page_with_partial_error",
+     "spec/sandbox/test_site/site/stylesheets/application.css",
+     "spec/sandbox/test_site/site/sub_folder/another_sub_folder.",
+     "spec/sandbox/test_site/site/sub_folder/another_sub_folder/index.html",
+     "spec/sandbox/test_site/site/sub_folder/another_sub_folder/index.html.html",
+     "spec/sandbox/test_site/site/sub_folder/index.html",
+     "spec/sandbox/test_site/src/helpers/application_helper.rb",
+     "spec/sandbox/test_site/src/layouts/alternate_layout.haml",
+     "spec/sandbox/test_site/src/layouts/application.haml",
+     "spec/sandbox/test_site/src/layouts/projects.haml",
+     "spec/sandbox/test_site/src/pages/hello_world.erb",
+     "spec/sandbox/test_site/src/pages/index.haml",
+     "spec/sandbox/test_site/src/pages/layout_test.haml",
+     "spec/sandbox/test_site/src/pages/page_with_error.haml",
+     "spec/sandbox/test_site/src/pages/page_with_partial_error.haml",
+     "spec/sandbox/test_site/src/partials/menu.haml",
+     "spec/sandbox/test_site/src/partials/partial_with_error.haml",
+     "spec/sandbox/test_site/src/stylesheets/application.sass",
+     "spec/sandbox/test_site/src/stylesheets/css_with_error.sass",
+     "spec/sandbox/test_site/src/stylesheets/nested/a_nested_stylesheet.sass",
+     "spec/sandbox/test_site/src/stylesheets/partials/_forms.sass",
+     "spec/server_spec.rb",
+     "spec/setup_spec.rb",
+     "spec/spec_helper.rb",
+     "spec/template_error_spec.rb"
   ]
   s.homepage = %q{http://staticmatic.net}
   s.rdoc_options = ["--charset=UTF-8"]
@@ -82,16 +84,16 @@ Gem::Specification.new do |s|
   s.rubygems_version = %q{1.3.5}
   s.summary = %q{Lightweight Static Site Framework}
   s.test_files = [
-    "test/base_test.rb",
-     "test/helpers_test.rb",
-     "test/render_test.rb",
-     "test/rescue_test.rb",
-     "test/sandbox/test_site/configuration.rb",
-     "test/sandbox/test_site/src/helpers/application_helper.rb",
-     "test/server_test.rb",
-     "test/setup_test.rb",
-     "test/template_error_test.rb",
-     "test/spec_helper.rb"
+    "spec/base_spec.rb",
+     "spec/helpers_spec.rb",
+     "spec/render_spec.rb",
+     "spec/rescue_spec.rb",
+     "spec/sandbox/test_site/configuration.rb",
+     "spec/sandbox/test_site/src/helpers/application_helper.rb",
+     "spec/server_spec.rb",
+     "spec/setup_spec.rb",
+     "spec/spec_helper.rb",
+     "spec/template_error_spec.rb"
   ]
 
   if s.respond_to? :specification_version then

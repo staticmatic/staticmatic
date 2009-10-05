@@ -15,7 +15,7 @@ begin
     gem.authors = ["Stephen Bartholomew"]
     gem.rubyforge_project = "staticmatic"
     
-    gem.files =  FileList["[A-Z]*", "{bin,lib,test}/**/*"]
+    gem.files =  FileList["[A-Z]*", "{bin,lib,spec}/**/*"]
     
     gem.add_dependency("haml", ">=2.0.0")
     gem.add_dependency("mongrel", ">=1.1.5")

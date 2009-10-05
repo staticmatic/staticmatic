@@ -18,7 +18,10 @@ module StaticMatic::BuildMixin
   def build_css
     Dir["#{@src_dir}/stylesheets/**/*.sass"].each do |path|
       file_dir, template = source_template_from_path(path.sub(/^#{@src_dir}\/stylesheets/, ''))
-      save_stylesheet(File.join(file_dir, template), generate_css(template, file_dir))
+      
+      if !template.match(/(^|\/)\_/)
+        save_stylesheet(File.join(file_dir, template), generate_css(template, file_dir))
+      end
     end
   end
   
