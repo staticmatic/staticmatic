@@ -1,0 +1,4 @@
+<h1>NoMethodError</h1>
+<p>undefined method `generate_partial' for nil:NilClass</p>
+<h2>Stack Trace</h2>
+./bin/../lib/staticmatic/helpers.rb:178:in `partial'<br/>(haml):3:in `render'<br/>/usr/local/lib/ruby/gems/1.8/gems/haml-2.0.4/lib/haml/engine.rb:149:in `render'<br/>/usr/local/lib/ruby/gems/1.8/gems/haml-2.0.4/lib/haml/engine.rb:149:in `instance_eval'<br/>/usr/local/lib/ruby/gems/1.8/gems/haml-2.0.4/lib/haml/engine.rb:149:in `render'<br/>./bin/../lib/staticmatic/handlers/haml.rb:8:in `compile'<br/>./bin/../lib/staticmatic/template.rb:17:in `template_for'<br/>./bin/../lib/staticmatic/mixins/render.rb:4:in `render'<br/>./bin/../lib/staticmatic/mixins/build.rb:8:in `build'<br/>./bin/../lib/staticmatic/mixins/build.rb:4:in `each'<br/>./bin/../lib/staticmatic/mixins/build.rb:4:in `build'<br/>./bin/../lib/staticmatic/base.rb:58:in `send'<br/>./bin/../lib/staticmatic/base.rb:58:in `run'<br/>bin/staticmatic:23
