@@ -1,6 +1,6 @@
 require "rubygems"
-require "rake"
-require "rake/testtask"
+require 'spec/rake/spectask'
+
 require File.dirname(__FILE__) + '/lib/staticmatic'
 
 begin
@@ -24,8 +24,8 @@ rescue LoadError
   puts "Jeweler, or one of its dependencies, is not available. Install it with: sudo gem install technicalpickles-jeweler -s http://gemgem.github.com"
 end
 
-desc "Run all unit tests"
-Rake::TestTask.new(:test) do |t|
-  t.test_files = Dir.glob("test/*_test.rb")
-  t.verbose = true
+Spec::Rake::SpecTask.new(:spec) do |spec|
+  spec.libs << 'lib' << 'spec'
+  spec.spec_files = FileList['spec/**/*_spec.rb']
+  # spec.spec_opts = ['--options', 'spec/spec.opts']
 end

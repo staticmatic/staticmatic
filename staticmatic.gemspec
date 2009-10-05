@@ -73,7 +73,7 @@ Gem::Specification.new do |s|
      "test/server_test.rb",
      "test/setup_test.rb",
      "test/template_error_test.rb",
-     "test/test_helper.rb"
+     "test/spec_helper.rb"
   ]
   s.homepage = %q{http://staticmatic.net}
   s.rdoc_options = ["--charset=UTF-8"]
@@ -91,7 +91,7 @@ Gem::Specification.new do |s|
      "test/server_test.rb",
      "test/setup_test.rb",
      "test/template_error_test.rb",
-     "test/test_helper.rb"
+     "test/spec_helper.rb"
   ]
 
   if s.respond_to? :specification_version then
