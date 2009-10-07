@@ -26,4 +26,15 @@ describe "Helpers:" do
       @links.should_not match(/\_forms.css/)
     end
   end
+  
+  context "When using the stylesheet helper from a sub page" do
+    before do
+      @staticmatic.instance_variable_set("@current_page", "/sub/index.html")
+      @links = stylesheets
+    end
+    
+    it "should link relative to current page" do
+      @links.should match(/\.\.\/stylesheets/)
+    end
+  end
 end

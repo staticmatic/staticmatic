@@ -44,10 +44,10 @@ module StaticMatic
           filename_without_extension = File.basename(path).chomp(File.extname(path))
           
           if !filename_without_extension.match(/^\_/)
-            relative_path = path.gsub(/#{@staticmatic.base_dir}\/(src|site)\//, "").
+            path = path.gsub(/#{@staticmatic.base_dir}\/(src|site)\//, "").
                                  gsub(/#{filename_without_extension}\.(sass|css)/, "")
           
-            options[:href] = "#{relative_path}#{filename_without_extension}.css"
+            options[:href] = "#{relative_path}#{path}#{filename_without_extension}.css"
             output << tag(:link, options)
           end
         end
