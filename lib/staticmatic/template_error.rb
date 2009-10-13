@@ -20,7 +20,7 @@ class StaticMatic::TemplateError < StandardError
   end
   
   def source_extract(indentation = 0)
-    return unless num = line_number
+    return "" unless num = line_number
     num = num.to_i
 
     source_code = @source.split("\n")
