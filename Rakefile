@@ -18,6 +18,7 @@ begin
     gem.files =  FileList["[A-Z]*", "{bin,lib,spec}/**/*"]
     
     gem.add_dependency("haml", ">=2.0.0")
+    gem.add_dependency("rack", ">=1.0")
     gem.add_dependency("mongrel", ">=1.1.5")
   end
 rescue LoadError
