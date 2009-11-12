@@ -2,7 +2,8 @@ require 'rubygems'
 require 'haml'
 require 'sass'
 require 'sass/plugin'
-require 'mongrel'
+require 'rack'
+require 'rack/handler/mongrel'
 require 'fileutils'
 
 module StaticMatic

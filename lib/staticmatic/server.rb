@@ -1,17 +1,14 @@
 module StaticMatic
-  class Server < Mongrel::HttpHandler
-    @@file_only_methods = ["GET","HEAD"]
- 
-    def initialize(staticmatic)
-      @files = Mongrel::DirHandler.new(staticmatic.site_dir, false)
+  class Server
+    def initialize(staticmatic, default = nil)
+      @files = default || Rack::File.new(staticmatic.site_dir)
       @staticmatic = staticmatic
     end
-  
-    def process(request, response)
+
+    def call(env)
       @staticmatic.load_helpers
-      path_info = request.params[Mongrel::Const::PATH_INFO]
-      get_or_head = @@file_only_methods.include? request.params[Mongrel::Const::REQUEST_METHOD]
-      
+      path_info = env["PATH_INFO"]
+
       file_dir, file_name, file_ext = expand_path(path_info)
 
       # remove stylesheets/ directory if applicable
@@ -19,39 +16,43 @@ module StaticMatic
       
       file_dir = CGI::unescape(file_dir)
       file_name = CGI::unescape(file_name)
-      
-      if file_ext && file_ext.match(/html|css/)
-        response.start(200) do |head, out|
-          head["Content-Type"] = "text/#{file_ext}"
-          output = ""
 
-          if @staticmatic.template_exists?(file_name, file_dir) && !(File.basename(file_name) =~ /^\_/)
-
-            begin
-              if file_ext == "css"
-                output = @staticmatic.generate_css(file_name, file_dir)
-              else
-                output = @staticmatic.generate_html_with_layout(file_name, file_dir)
-              end
-            rescue StaticMatic::Error => e
-              output = e.message
-            end
-          else
-            if @files.can_serve(path_info)
-              @files.process(request,response)
-            else
-              output = "File not Found"
-            end
-          end
-          out.write output
-        end
-      else
-        # try to serve static file from site dir
-        if @files.can_serve(path_info)
-          @files.process(request,response)
-        end
+      unless file_ext && ["html", "css"].include?(file_ext) &&
+          @staticmatic.template_exists?(file_name, file_dir) &&
+          File.basename(file_name) !~ /^\_/
+        return @files.call(env)
       end
+
+      res = Rack::Response.new
+      res.header["Content-Type"] = "text/#{file_ext}"
+
+      begin
+        if file_ext == "css"
+          res.write @staticmatic.generate_css(file_name, file_dir)
+        else
+          res.write @staticmatic.generate_html_with_layout(file_name, file_dir)
+        end
+      rescue StaticMatic::Error => e
+        res.write e.message
+      end
+
+      res.finish
     end
+
+    # Starts the StaticMatic preview server
+    def self.start(staticmatic)
+      port = staticmatic.configuration.preview_server_port || 3000
+
+      host = staticmatic.configuration.preview_server_host || ""
+
+      app = Rack::Builder.new do
+        use Rack::ShowExceptions
+        run StaticMatic::Server.new(staticmatic)
+      end
+      Rack::Handler::Mongrel.run(app, :Port => port, :Host => host)
+    end
+
+    private
 
     def expand_path(path_info)
       dirname, basename = File.split(path_info)
@@ -70,25 +71,6 @@ module StaticMatic
       end
 
       [ dirname, filename, extname ]
-    end
-    
-    class << self
-      # Starts the StaticMatic preview server
-      def start(staticmatic)
-        port = staticmatic.configuration.preview_server_port || 3000
-        
-        host = staticmatic.configuration.preview_server_host || ""
-        
-        config = Mongrel::Configurator.new :host => host do
-          puts "Running Preview of #{staticmatic.base_dir} on #{host}:#{port}"
-          listener :port => port do
-            uri "/", :handler => Server.new(staticmatic)
-          end
-          trap("INT") { stop }
-          run
-        end
-        config.join
-      end
     end
   end
 end
