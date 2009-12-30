@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{staticmatic}
-  s.version = "0.10.6"
+  s.version = "0.10.7"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Stephen Bartholomew"]
-  s.date = %q{2009-11-11}
+  s.date = %q{2009-11-23}
   s.default_executable = %q{staticmatic}
   s.description = %q{Lightweight Static Site Framework}
   s.email = %q{steve@curve21.com}
@@ -83,16 +83,16 @@ Gem::Specification.new do |s|
   s.rubygems_version = %q{1.3.5}
   s.summary = %q{Lightweight Static Site Framework}
   s.test_files = [
-    "spec/template_error_spec.rb",
-     "spec/rescue_spec.rb",
-     "spec/spec_helper.rb",
-     "spec/server_spec.rb",
-     "spec/setup_spec.rb",
+    "spec/base_spec.rb",
+     "spec/helpers_spec.rb",
      "spec/render_spec.rb",
+     "spec/rescue_spec.rb",
      "spec/sandbox/test_site/configuration.rb",
      "spec/sandbox/test_site/src/helpers/application_helper.rb",
-     "spec/base_spec.rb",
-     "spec/helpers_spec.rb"
+     "spec/server_spec.rb",
+     "spec/setup_spec.rb",
+     "spec/spec_helper.rb",
+     "spec/template_error_spec.rb"
   ]
 
   if s.respond_to? :specification_version then
