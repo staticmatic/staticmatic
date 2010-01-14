@@ -159,7 +159,13 @@ module StaticMatic
         output << yield
         output << "</#{name}>"
       else
-        output << "/>"
+        format = @staticmatic.configuration.haml_options[:format]
+        
+        if format.nil? || format == :xhtml
+          output << "/>"
+        else
+          output << ">"
+        end
       end
       output
     end
