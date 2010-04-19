@@ -1,24 +1,4 @@
-module StaticMatic
-  # Directories generated for a new site setup
-  BASE_DIRS = %w{
-    site/
-    site/stylesheets
-    site/images
-    site/javascripts
-    src/
-    src/pages/
-    src/layouts
-    src/stylesheets
-    src/helpers
-  }
-
-  # Templates for setup and their location
-  TEMPLATES = {
-    'application.haml' => 'layouts',
-    'application.sass' => 'stylesheets',
-    'index.haml' => 'pages'
-  }
-  
+module StaticMatic  
   class Base
     
     include StaticMatic::RenderMixin
@@ -42,7 +22,6 @@ module StaticMatic
       @base_dir = File.expand_path(base_dir)
       @src_dir = "#{@base_dir}/src"
       @site_dir = "#{@base_dir}/site"
-      @templates_dir = File.dirname(__FILE__) + '/templates/default/'
       
       @layout = "application"
       @scope = Object.new

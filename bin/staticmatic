@@ -12,7 +12,11 @@ end
 
 configuration = StaticMatic::Configuration.new
 
-config_file = "#{directory}/src/configuration.rb"
+config_file = File.join(directory, "config", "site.rb")
+
+if !File.exists?(config_file)
+  config_file = File.join(directory, "src", "configuration.rb")
+end
 
 if File.exists?(config_file)
   config = File.read(config_file)

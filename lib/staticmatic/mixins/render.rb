@@ -99,7 +99,7 @@ module StaticMatic::RenderMixin
   end
 
   def determine_layout(dir = '')
-    layout_name = "application"
+    layout_name = "default"
   
     if @scope.instance_variable_get("@layout")
       layout_name = @scope.instance_variable_get("@layout")

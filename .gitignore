@@ -1,7 +1,8 @@
 .DS_Store
 coverage
 pkg
-test/sandbox/test_site/site/*
+spec/sandbox/test_site/site/*
+spec/sandbox/tmp
 website/site/*.html
 website/site/releases/
 website/site/helper_central
