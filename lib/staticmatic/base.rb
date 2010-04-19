@@ -26,7 +26,7 @@ module StaticMatic
       @layout = "application"
       @scope = Object.new
       @scope.instance_variable_set("@staticmatic", self)
-      
+      configure_compass
       load_helpers
     end
     
@@ -59,6 +59,16 @@ module StaticMatic
       "#{@src_dir}/layouts/#{name}.haml"
     end
     
+    def configure_compass
+      Compass.configuration do |config|
+        config.project_path = @base_dir
+        config.sass_dir = File.join(@base_dir, "src", "stylesheets")
+        config.css_dir = File.join(@base_dir, "site", "stylesheets")
+        config.images_dir = File.join(@base_dir, "site", "images")
+        config.http_path = "/"
+        config.http_images_path = "/images"
+      end
+    end
     class << self
       def base_dirs
         StaticMatic::BASE_DIRS

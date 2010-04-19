@@ -16,6 +16,10 @@ config_file = File.join(directory, "config", "site.rb")
 
 if !File.exists?(config_file)
   config_file = File.join(directory, "src", "configuration.rb")
+  
+  if File.exists?(config_file)
+    puts "Please move #{directory}/src/configuration.rb to #{directory}/config/site.rb"
+  end
 end
 
 if File.exists?(config_file)
