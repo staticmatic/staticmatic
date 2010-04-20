@@ -20,7 +20,7 @@ if !File.exists?(config_file)
   config_file = File.join(directory, "src", "configuration.rb")
   
   if File.exists?(config_file)
-    puts "Please move #{directory}/src/configuration.rb to #{directory}/config/site.rb"
+    puts "DEPRECATION: #{directory}/src/configuration.rb will be moved to #{directory}/config/site.rb in 0.12.0"
   end
 end
 

@@ -23,7 +23,13 @@ module StaticMatic
       @src_dir = File.join(@base_dir, "src")
       @site_dir = File.join(@base_dir, "site")
       
-      @layout = "default"
+      if File.exists?(File.join(@src_dir, "layouts", "application.haml"))
+        puts "DEPRECATION: layouts/application.haml will be renamed to layouts/default.haml in the 0.12.0"
+        @layout = "application"
+      else
+        @layout = "default"
+      end
+      
       @scope = Object.new
       @scope.instance_variable_set("@staticmatic", self)
       
