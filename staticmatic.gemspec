@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{staticmatic}
-  s.version = "0.10.8"
+  s.version = "0.11.0.alpha.0"
 
-  s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
+  s.required_rubygems_version = Gem::Requirement.new("> 1.3.1") if s.respond_to? :required_rubygems_version=
   s.authors = ["Stephen Bartholomew"]
-  s.date = %q{2010-03-20}
+  s.date = %q{2010-04-20}
   s.default_executable = %q{staticmatic}
   s.description = %q{Lightweight Static Site Framework}
   s.email = %q{steve@curve21.com}
@@ -37,25 +37,28 @@ Gem::Specification.new do |s|
      "lib/staticmatic/mixins/setup.rb",
      "lib/staticmatic/server.rb",
      "lib/staticmatic/template_error.rb",
-     "lib/staticmatic/templates/default/application.haml",
-     "lib/staticmatic/templates/default/application.sass",
-     "lib/staticmatic/templates/default/index.haml",
+     "lib/staticmatic/templates/project/config/site.rb",
+     "lib/staticmatic/templates/project/src/layouts/default.haml",
+     "lib/staticmatic/templates/project/src/pages/index.haml",
+     "lib/staticmatic/templates/project/src/stylesheets/screen.sass",
      "lib/staticmatic/templates/rescues/default.haml",
      "lib/staticmatic/templates/rescues/template.haml",
      "spec/base_spec.rb",
+     "spec/compass_integration_spec.rb",
      "spec/helpers_spec.rb",
      "spec/render_spec.rb",
      "spec/rescue_spec.rb",
-     "spec/sandbox/test_site/configuration.rb",
+     "spec/sandbox/test_site/config/site.rb",
      "spec/sandbox/test_site/site/index",
      "spec/sandbox/test_site/site/layout_test",
      "spec/sandbox/test_site/site/stylesheets/application.css",
      "spec/sandbox/test_site/site/sub_folder/another_sub_folder/index.html",
      "spec/sandbox/test_site/site/sub_folder/another_sub_folder/index.html.html",
      "spec/sandbox/test_site/site/sub_folder/index.html",
+     "spec/sandbox/test_site/src/configuration.rb",
      "spec/sandbox/test_site/src/helpers/application_helper.rb",
      "spec/sandbox/test_site/src/layouts/alternate_layout.haml",
-     "spec/sandbox/test_site/src/layouts/application.haml",
+     "spec/sandbox/test_site/src/layouts/default.haml",
      "spec/sandbox/test_site/src/layouts/projects.haml",
      "spec/sandbox/test_site/src/pages/hello_world.erb",
      "spec/sandbox/test_site/src/pages/index.haml",
@@ -68,6 +71,13 @@ Gem::Specification.new do |s|
      "spec/sandbox/test_site/src/stylesheets/css_with_error.sass",
      "spec/sandbox/test_site/src/stylesheets/nested/a_nested_stylesheet.sass",
      "spec/sandbox/test_site/src/stylesheets/partials/_forms.sass",
+     "spec/sandbox/tmp/Rakefile",
+     "spec/sandbox/tmp/config/compass.rb",
+     "spec/sandbox/tmp/config/site.rb",
+     "spec/sandbox/tmp/src/layouts/default.haml",
+     "spec/sandbox/tmp/src/layouts/site.haml",
+     "spec/sandbox/tmp/src/pages/index.haml",
+     "spec/sandbox/tmp/src/stylesheets/screen.sass",
      "spec/server_spec.rb",
      "spec/setup_spec.rb",
      "spec/spec_helper.rb",
@@ -77,15 +87,19 @@ Gem::Specification.new do |s|
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.rubyforge_project = %q{staticmatic}
-  s.rubygems_version = %q{1.3.5}
+  s.rubygems_version = %q{1.3.6}
   s.summary = %q{Lightweight Static Site Framework}
   s.test_files = [
     "spec/base_spec.rb",
+     "spec/compass_integration_spec.rb",
      "spec/helpers_spec.rb",
      "spec/render_spec.rb",
      "spec/rescue_spec.rb",
-     "spec/sandbox/test_site/configuration.rb",
+     "spec/sandbox/test_site/config/site.rb",
+     "spec/sandbox/test_site/src/configuration.rb",
      "spec/sandbox/test_site/src/helpers/application_helper.rb",
+     "spec/sandbox/tmp/config/compass.rb",
+     "spec/sandbox/tmp/config/site.rb",
      "spec/server_spec.rb",
      "spec/setup_spec.rb",
      "spec/spec_helper.rb",
@@ -100,15 +114,18 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<haml>, [">= 2.0.0"])
       s.add_runtime_dependency(%q<rack>, [">= 1.0"])
       s.add_runtime_dependency(%q<mongrel>, [">= 1.1.5"])
+      s.add_runtime_dependency(%q<compass>, [">= 0"])
     else
       s.add_dependency(%q<haml>, [">= 2.0.0"])
       s.add_dependency(%q<rack>, [">= 1.0"])
       s.add_dependency(%q<mongrel>, [">= 1.1.5"])
+      s.add_dependency(%q<compass>, [">= 0"])
     end
   else
     s.add_dependency(%q<haml>, [">= 2.0.0"])
     s.add_dependency(%q<rack>, [">= 1.0"])
     s.add_dependency(%q<mongrel>, [">= 1.1.5"])
+    s.add_dependency(%q<compass>, [">= 0"])
   end
 end
 
