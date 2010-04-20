@@ -5,6 +5,8 @@ require File.dirname(__FILE__) + '/../lib/staticmatic'
 command = ARGV[0]
 directory = ARGV[1]
 
+$:.push File.join(directory, "lib")
+
 if !command || !directory
   puts "Usage: #{$0} <build|setup|preview> <directory>"
   exit

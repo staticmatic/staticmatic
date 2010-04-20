@@ -19,13 +19,14 @@ module StaticMatic
       @configuration = configuration
       @current_page = nil
       @current_file_stack = []
-      @base_dir = File.expand_path(base_dir)
-      @src_dir = "#{@base_dir}/src"
-      @site_dir = "#{@base_dir}/site"
+      @base_dir = base_dir
+      @src_dir = File.join(@base_dir, "src")
+      @site_dir = File.join(@base_dir, "site")
       
-      @layout = "application"
+      @layout = "default"
       @scope = Object.new
       @scope.instance_variable_set("@staticmatic", self)
+      
       configure_compass
       load_helpers
     end
@@ -35,6 +36,8 @@ module StaticMatic
     end
   
     def run(command)
+      puts "Site root is: #{@base_dir}"
+      
       if %w(build setup preview).include?(command)
         send(command)
       else
@@ -56,23 +59,21 @@ module StaticMatic
     end
     
     def full_layout_path(name)
-      "#{@src_dir}/layouts/#{name}.haml"
+      File.join(@src_dir, "layouts", "#{name}.haml")
     end
     
     def configure_compass
       Compass.configuration do |config|
-        config.project_path = @base_dir
+        config.output_style = :expanded
+        config.project_path = @base_dir 
         config.sass_dir = File.join(@base_dir, "src", "stylesheets")
         config.css_dir = File.join(@base_dir, "site", "stylesheets")
         config.images_dir = File.join(@base_dir, "site", "images")
         config.http_path = "/"
         config.http_images_path = "/images"
       end
-    end
-    class << self
-      def base_dirs
-        StaticMatic::BASE_DIRS
-      end
+      
+      configuration.sass_options.merge!(Compass.sass_engine_options)
     end
   end
 end
