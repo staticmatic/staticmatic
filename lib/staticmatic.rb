@@ -8,7 +8,7 @@ require 'fileutils'
 require 'compass'
 
 module StaticMatic
-  VERSION = 0.10.10
+  VERSION = 0.11.0
 end
 
 ["render", "build", "setup", "server", "helpers", "rescue"].each do |mixin|
