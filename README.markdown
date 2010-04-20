@@ -27,9 +27,11 @@ After this command you'll have the following files:
         stylesheets/
         javascripts/
       src/
+        config/
+          site.rb
         helpers/
         layouts/
-          application.haml
+          default.haml
         pages/
           index.haml
         stylesheets/
@@ -40,7 +42,7 @@ edited the pages and stylesheets, you can generate the static site:
 
     staticmatic build <directory>
     
-All of the pages are parsed and wrapped up in application.haml and put into the site directory.
+All of the pages are parsed and wrapped up in default.haml and put into the site directory.
 
 ## Templates
 
