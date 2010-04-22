@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{staticmatic}
-  s.version = "0.11.0.alpha.1"
+  s.version = "0.11.0.alpha.2"
 
   s.required_rubygems_version = Gem::Requirement.new("> 1.3.1") if s.respond_to? :required_rubygems_version=
   s.authors = ["Stephen Bartholomew"]
-  s.date = %q{2010-04-21}
+  s.date = %q{2010-04-22}
   s.default_executable = %q{staticmatic}
   s.description = %q{Lightweight Static Site Framework}
   s.email = %q{steve@curve21.com}
@@ -55,7 +55,6 @@ Gem::Specification.new do |s|
      "spec/sandbox/test_site/site/sub_folder/another_sub_folder/index.html",
      "spec/sandbox/test_site/site/sub_folder/another_sub_folder/index.html.html",
      "spec/sandbox/test_site/site/sub_folder/index.html",
-     "spec/sandbox/test_site/src/configuration.rb",
      "spec/sandbox/test_site/src/helpers/application_helper.rb",
      "spec/sandbox/test_site/src/layouts/alternate_layout.haml",
      "spec/sandbox/test_site/src/layouts/default.haml",
@@ -71,6 +70,7 @@ Gem::Specification.new do |s|
      "spec/sandbox/test_site/src/stylesheets/css_with_error.sass",
      "spec/sandbox/test_site/src/stylesheets/nested/a_nested_stylesheet.sass",
      "spec/sandbox/test_site/src/stylesheets/partials/_forms.sass",
+     "spec/sandbox/test_site/src/stylesheets/sassy.scss",
      "spec/sandbox/tmp/Rakefile",
      "spec/sandbox/tmp/config/compass.rb",
      "spec/sandbox/tmp/config/site.rb",
@@ -96,7 +96,6 @@ Gem::Specification.new do |s|
      "spec/render_spec.rb",
      "spec/rescue_spec.rb",
      "spec/sandbox/test_site/config/site.rb",
-     "spec/sandbox/test_site/src/configuration.rb",
      "spec/sandbox/test_site/src/helpers/application_helper.rb",
      "spec/sandbox/tmp/config/compass.rb",
      "spec/sandbox/tmp/config/site.rb",

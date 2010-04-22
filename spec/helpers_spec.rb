@@ -20,6 +20,7 @@ describe "Helpers:" do
     it "should set up links for all stylesheets" do
       @links.should match(/stylesheets\/application\.css/)
       @links.should match(/stylesheets\/nested\/a_nested_stylesheet\.css/)
+      @links.should match(/stylesheets\/sassy\.css/)
     end
     
     it "should not link to partials" do

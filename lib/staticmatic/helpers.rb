@@ -22,7 +22,7 @@ module StaticMatic
       if params.length == 0
         # no specific files requested so include all in no particular order
         stylesheet_dir = File.join(@staticmatic.src_dir, 'stylesheets')
-        stylesheet_directories = Dir[File.join(stylesheet_dir, '**','*.sass')]
+        stylesheet_directories = Dir[File.join(stylesheet_dir, '**','*.{sass,scss}')]
         
         # Bit of a hack here - adds any stylesheets that exist in the site/ dir that haven't been generated from source sass
         Dir[File.join(@staticmatic.site_dir, 'stylesheets', '*.css')].each do |filename|
@@ -45,7 +45,7 @@ module StaticMatic
           
           if !filename_without_extension.match(/^\_/)
             path = path.gsub(/#{@staticmatic.base_dir}\/(src|site)\//, "").
-                                 gsub(/#{filename_without_extension}\.(sass|css)/, "")
+                                 gsub(/#{filename_without_extension}\.(sass|scss|css)/, "")
           
             options[:href] = "#{relative_path}#{path}#{filename_without_extension}.css"
             output << tag(:link, options)
