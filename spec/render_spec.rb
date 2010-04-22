@@ -28,4 +28,10 @@ describe "StaticMatic::Render" do
     @staticmatic.determine_layout("test/projects").should == "projects"
   end
   
+  context "handling scss" do
+    it "should generate css from scss" do
+      @staticmatic.generate_css("sassy").should match(/color\: \#3bbfce\;/)
+    end
+  end
+  
 end

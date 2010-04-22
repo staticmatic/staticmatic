@@ -74,9 +74,16 @@ module StaticMatic::RenderMixin
   end
 
   def generate_css(source, source_dir = '')
-    full_file_path = File.join(@src_dir, 'stylesheets', source_dir, "#{source}.sass")
+    # full_file_path = File.join(@src_dir, 'stylesheets', source_dir, "#{source}.sass")
+    full_file_path = Dir[File.join(@src_dir, 'stylesheets', source_dir, "#{source}.{sass,scss}")].first
+
     begin
       sass_options = { :load_paths => [ File.join(@src_dir, 'stylesheets') ] }.merge(self.configuration.sass_options)
+      
+      if File.extname(full_file_path) == ".scss"
+        sass_options[:syntax] = :scss
+      end
+      
       stylesheet = Sass::Engine.new(File.read(full_file_path), sass_options)
       stylesheet.to_css
     rescue Exception => e
