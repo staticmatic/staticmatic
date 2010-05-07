@@ -79,7 +79,7 @@ module StaticMatic::RenderMixin
 
     begin
       sass_options = { :load_paths => [ File.join(@src_dir, 'stylesheets') ] }.merge(self.configuration.sass_options)
-      
+
       if File.extname(full_file_path) == ".scss"
         sass_options[:syntax] = :scss
       end
