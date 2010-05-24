@@ -24,10 +24,10 @@ module StaticMatic
       @site_dir = File.join(@base_dir, "site")
       
       if File.exists?(File.join(@src_dir, "layouts", "application.haml"))
-        puts "DEPRECATION: layouts/application.haml will be renamed to layouts/default.haml in the 0.12.0"
-        @layout = "application"
+        puts "DEPRECATION: layouts/application.haml will be renamed to layouts/default.haml in 0.12.0"
+        @default_layout = "application"
       else
-        @layout = "default"
+        @default_layout = "default"
       end
       
       @scope = Object.new

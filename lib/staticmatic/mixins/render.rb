@@ -1,10 +1,18 @@
 module StaticMatic::RenderMixin
   
+  # clear all scope variables except @staticmatic
+  def clear_template_variables!
+    
+    @scope.instance_variables.each do |var|
+      @scope.instance_variable_set(var, nil) unless var == '@staticmatic' || var == :@staticmatic
+    end
+  end
+  
   def source_for_layout
-    if layout_exists?(@layout)
-      File.read(full_layout_path(@layout))
+    if layout_exists?(determine_layout)
+      File.read(full_layout_path(determine_layout))
     else
-      raise StaticMatic::Error.new("", full_layout_path(@layout), "Layout not found")
+      raise StaticMatic::Error.new("", full_layout_path(determine_layout), "Layout not found")
     end
   end
 
@@ -14,13 +22,8 @@ module StaticMatic::RenderMixin
     full_file_path = File.join(@src_dir, 'pages', source_dir, "#{source_file}.haml")
 
     begin
-      # clear all scope variables except @staticmatic
-      @scope.instance_variables.each do |var|
-        @scope.instance_variable_set(var, nil) unless var == '@staticmatic' || var == :@staticmatic
-      end
+
       html = generate_html_from_template_source(File.read(full_file_path))
-  
-      @layout = determine_layout(source_dir)
     rescue StaticMatic::TemplateError => e
       raise e # re-raise inline errors
     rescue Exception => e
@@ -35,11 +38,11 @@ module StaticMatic::RenderMixin
     @current_file_stack.unshift(File.join(source_dir, "#{source}.haml"))
     begin 
       template_content = generate_html(source, source_dir)
-      @layout = determine_layout(source_dir)
       generate_html_from_template_source(source_for_layout) { template_content }
     rescue Exception => e
       render_rescue_from_error(e)
     ensure
+      clear_template_variables!
       @current_page = nil
       @current_file_stack.shift
     end
@@ -106,7 +109,7 @@ module StaticMatic::RenderMixin
   end
 
   def determine_layout(dir = '')
-    layout_name = @layout
+    layout_name ||= @default_layout
   
     if @scope.instance_variable_get("@layout")
       layout_name = @scope.instance_variable_get("@layout")
@@ -119,7 +122,7 @@ module StaticMatic::RenderMixin
       end
     end
 
-    layout_name
+    layout_name 
   end
     
   # Returns a raw template name from a source file path:

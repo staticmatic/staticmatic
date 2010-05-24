@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{staticmatic}
-  s.version = "0.11.0.alpha.4"
+  s.version = "0.11.0.alpha.5"
 
   s.required_rubygems_version = Gem::Requirement.new("> 1.3.1") if s.respond_to? :required_rubygems_version=
   s.authors = ["Stephen Bartholomew"]
-  s.date = %q{2010-04-22}
+  s.date = %q{2010-05-24}
   s.default_executable = %q{staticmatic}
   s.description = %q{Lightweight Static Site Framework}
   s.email = %q{steve@curve21.com}
@@ -62,6 +62,8 @@ Gem::Specification.new do |s|
      "spec/sandbox/test_site/src/pages/hello_world.erb",
      "spec/sandbox/test_site/src/pages/index.haml",
      "spec/sandbox/test_site/src/pages/layout_test.haml",
+     "spec/sandbox/test_site/src/pages/page_one.haml",
+     "spec/sandbox/test_site/src/pages/page_two.haml",
      "spec/sandbox/test_site/src/pages/page_with_error.haml",
      "spec/sandbox/test_site/src/pages/page_with_partial_error.haml",
      "spec/sandbox/test_site/src/partials/menu.haml",

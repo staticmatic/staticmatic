@@ -34,4 +34,11 @@ describe "StaticMatic::Render" do
     end
   end
   
+  it "should clear template variables" do
+    @staticmatic.generate_html("page_one")
+    @staticmatic.clear_template_variables!
+    output = @staticmatic.generate_html("page_two")
+    output.should match(/The variable is/)
+    output.should_not match(/hello/)
+  end
 end
