@@ -16,7 +16,7 @@ module StaticMatic::BuildMixin
 
   # Build CSS from the source files
   def build_css
-    Dir["#{@src_dir}/stylesheets/**/*.sass"].each do |path|
+    Dir["#{@src_dir}/stylesheets/**/*.{sass,scss}"].each do |path|
       file_dir, template = source_template_from_path(path.sub(/^#{@src_dir}\/stylesheets/, ''))
       
       if !template.match(/(^|\/)\_/)
