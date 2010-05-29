@@ -1,11 +1,12 @@
 require 'rubygems'
+require 'compass'
 require 'haml'
 require 'sass'
 require 'sass/plugin'
 require 'rack'
 require 'rack/handler/mongrel'
 require 'fileutils'
-require 'compass'
+
 
 module StaticMatic
   VERSION = "0.11.0"

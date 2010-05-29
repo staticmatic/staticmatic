@@ -12,22 +12,5 @@ end
 
 $:.push File.join(directory, "lib")
 
-configuration = StaticMatic::Configuration.new
-
-config_file = File.join(directory, "config", "site.rb")
-
-if !File.exists?(config_file)
-  config_file = File.join(directory, "src", "configuration.rb")
-  
-  if File.exists?(config_file)
-    puts "DEPRECATION: #{directory}/src/configuration.rb will be moved to #{directory}/config/site.rb in 0.12.0"
-  end
-end
-
-if File.exists?(config_file)
-  config = File.read(config_file)
-  eval(config)
-end
-
-staticmatic = StaticMatic::Base.new(directory, configuration)
+staticmatic = StaticMatic::Base.new(directory)
 staticmatic.run(command)

@@ -1,0 +1,24 @@
+%h1 Compass Integration
+
+= partial "requires_prerelease"
+    
+%p 
+  StaticMatic loves Compass and works with it straight out of the box.  
+  
+%p
+  If you'd like to customize your Compass setup, simply create 
+  %pre.code /config/compass.rb
+  and StaticMatic will load it for you automatically.
+  
+%p 
+  For example, you might want to config the output style for your stylesheets:
+  
+%pre.code
+  :plain
+    /config/compass.rb    
+    output_style = :compact
+      
+    
+%p 
+  For a run down of what you can configure in /config/compass.rb, see:
+  = link "The Compass Configuration Reference", "http://compass-style.org/docs/tutorials/configuration-reference/"
