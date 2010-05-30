@@ -49,7 +49,7 @@ module StaticMatic
         use Rack::ShowExceptions
         run StaticMatic::Server.new(staticmatic)
       end
-      Rack::Handler::Mongrel.run(app, :Port => port, :Host => host)
+      Rack::Handler::WEBrick.run(app, :Port => port, :Host => host)
     end
 
     private

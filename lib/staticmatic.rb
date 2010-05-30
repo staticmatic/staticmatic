@@ -4,7 +4,8 @@ require 'haml'
 require 'sass'
 require 'sass/plugin'
 require 'rack'
-require 'rack/handler/mongrel'
+require 'rack/handler/webrick'
+require 'cgi'
 require 'fileutils'
 
 
