@@ -27,7 +27,7 @@ module StaticMatic
         # Bit of a hack here - adds any stylesheets that exist in the site/ dir that haven't been generated from source sass
         Dir[File.join(@staticmatic.site_dir, 'stylesheets', '*.css')].each do |filename|
           search_filename = File.basename(filename).chomp(File.extname(filename))
-
+          puts search_filename
           already_included = false
           stylesheet_directories.each do |path|
             if File.basename(path).include?(search_filename)
@@ -44,9 +44,11 @@ module StaticMatic
           filename_without_extension = File.basename(path).chomp(File.extname(path))
           
           if !filename_without_extension.match(/^\_/)
-            path = path.gsub(/#{@staticmatic.base_dir}\/(src|site)\//, "").
-                                 gsub(/#{filename_without_extension}\.(sass|scss|css)/, "")
-          
+            
+            path = path.gsub(/#{@staticmatic.src_dir}/, "").
+                        gsub(/#{@staticmatic.site_dir}/, "").
+                        gsub(/#{filename_without_extension}\.(sass|scss|css)/, "")
+                        
             options[:href] = "#{relative_path}#{path}#{filename_without_extension}.css"
             output << tag(:link, options)
           end

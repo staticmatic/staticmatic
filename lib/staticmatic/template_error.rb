@@ -6,13 +6,17 @@ class StaticMatic::TemplateError < StandardError
   def initialize(template, original_exception)
     @template, @original_exception = template, original_exception
     @backtrace = original_exception.backtrace
-
-    @source = File.read(template)
+    
+    if template
+      @source = File.read(template)
+    else 
+      @source = ""
+    end
   end
   
   # TODO: Replace 'haml|sass' with any registered engines
   def line_number
-    @line_number ||= $2 if backtrace.find { |line| line =~ /\((haml|sass)\)\:(\d+)/ }
+    @line_number ||= $2 if backtrace.find { |line| line =~ /\((haml|sass|scss)\)\:(\d+)/ }
   end
   
   def filename

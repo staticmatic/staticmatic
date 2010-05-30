@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{staticmatic}
-  s.version = "0.11.0.alpha.5"
+  s.version = "0.11.0.alpha.6"
 
   s.required_rubygems_version = Gem::Requirement.new("> 1.3.1") if s.respond_to? :required_rubygems_version=
   s.authors = ["Stephen Bartholomew"]
-  s.date = %q{2010-05-24}
+  s.date = %q{2010-05-30}
   s.default_executable = %q{staticmatic}
   s.description = %q{Lightweight Static Site Framework}
   s.email = %q{steve@curve21.com}
@@ -26,6 +26,8 @@ Gem::Specification.new do |s|
      "bin/staticmatic",
      "lib/staticmatic.rb",
      "lib/staticmatic/base.rb",
+     "lib/staticmatic/compass/app_integration.rb",
+     "lib/staticmatic/compass/configuration_defaults.rb",
      "lib/staticmatic/configuration.rb",
      "lib/staticmatic/error.rb",
      "lib/staticmatic/helpers.rb",
@@ -48,10 +50,10 @@ Gem::Specification.new do |s|
      "spec/helpers_spec.rb",
      "spec/render_spec.rb",
      "spec/rescue_spec.rb",
+     "spec/sandbox/test_site/config/compass.rb",
      "spec/sandbox/test_site/config/site.rb",
      "spec/sandbox/test_site/site/index",
      "spec/sandbox/test_site/site/layout_test",
-     "spec/sandbox/test_site/site/stylesheets/application.css",
      "spec/sandbox/test_site/site/sub_folder/another_sub_folder/index.html",
      "spec/sandbox/test_site/site/sub_folder/another_sub_folder/index.html.html",
      "spec/sandbox/test_site/site/sub_folder/index.html",
@@ -97,6 +99,7 @@ Gem::Specification.new do |s|
      "spec/helpers_spec.rb",
      "spec/render_spec.rb",
      "spec/rescue_spec.rb",
+     "spec/sandbox/test_site/config/compass.rb",
      "spec/sandbox/test_site/config/site.rb",
      "spec/sandbox/test_site/src/helpers/application_helper.rb",
      "spec/sandbox/tmp/config/compass.rb",
