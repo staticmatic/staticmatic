@@ -92,22 +92,16 @@ module StaticMatic
     end
     
     def configure_compass
-      Compass.configuration do |config|
-        config.output_style = :expanded
-        config.project_path = @base_dir 
-        config.sass_dir = File.join("src", "stylesheets")
-        config.css_dir = File.join("site", "stylesheets")
-        config.images_dir = File.join("site", "images")
-        config.http_path = "/"
-        config.http_images_path = "/images"
-      end
+      Compass.configuration.project_path = @base_dir 
+      Compass.add_configuration(:staticmatic)
 
       compass_config_path = File.join(@base_dir, "config", "compass.rb")
       
       if File.exists?(compass_config_path)
         Compass.add_configuration(compass_config_path)  
       end
-      configuration.sass_options.merge!(Compass.sass_engine_options)
+
+      configuration.sass_options.merge!(Compass.configuration.to_sass_engine_options)
     end
   end
 end

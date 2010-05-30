@@ -11,8 +11,7 @@ describe "Compass integration" do
       Compass.configuration.sass_dir.should == File.join("src", "stylesheets")
       Compass.configuration.css_dir.should == File.join("site", "stylesheets")
       Compass.configuration.images_dir.should == File.join("site", "images")
-      Compass.configuration.http_path.should == "/"
-      Compass.configuration.http_images_path.should == "/images"
+      Compass.configuration.http_images_path.should == "site/images"
     end
   end
   

@@ -16,7 +16,7 @@ end
   require File.join(File.dirname(__FILE__), "staticmatic", "mixins", mixin)
 end
 
-["base", "configuration", "error", "server", "helpers", "template_error"].each do |lib|
+["base", "configuration", "error", "server", "helpers", "template_error", "compass/app_integration", "compass/configuration_defaults"].each do |lib|
   require File.join(File.dirname(__FILE__), "staticmatic", lib)
 end
 
