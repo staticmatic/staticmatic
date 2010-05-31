@@ -93,7 +93,6 @@ module StaticMatic
     
     def configure_compass
       Compass.configuration.project_path = @base_dir 
-      Compass.add_configuration(:staticmatic)
 
       compass_config_path = File.join(@base_dir, "config", "compass.rb")
       

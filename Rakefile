@@ -19,11 +19,10 @@ begin
     
     gem.add_dependency("haml", ">=2.0.0")
     gem.add_dependency("rack", ">=1.0")
-    gem.add_dependency("mongrel", ">=1.1.5")
-    gem.add_dependency("compass")
+    gem.add_dependency("compass", ">=0.10.0")
   end
 rescue LoadError
-  puts "Jeweler, or one of its dependencies, is not available. Install it with: sudo gem install technicalpickles-jeweler -s http://gemgem.github.com"
+  puts "Jeweler, or one of its dependencies, is not available. Install it with: gem install jeweler"
 end
 
 Spec::Rake::SpecTask.new(:spec) do |spec|

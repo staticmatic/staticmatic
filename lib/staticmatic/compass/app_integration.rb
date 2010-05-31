@@ -4,6 +4,8 @@ module Compass
     module Staticmatic
 
       extend self
+      
+
 
       def installer(*args)
         Installer.new(*args)
