@@ -1,0 +1,43 @@
+//**
+//  Susy: Un-obtrusive grids for designers
+//  By: Eric A. Meyer and OddBird
+//  Site: www.oddbird.net/susy/
+//**
+
+// Font Sizes --------------------------------------------------------------
+
+$base-font-size: 16px;
+$base-line-height: 24px;
+
+// Grid --------------------------------------------------------------
+
+$total-cols: 12;
+$col-width: 4em;
+$gutter-width: 1em;
+$side-gutter-width: $gutter-width;
+
+// Don't move this @import above the GRID and FONT-SIZE variables.
+@import "susy/susy";
+
+// Colors --------------------------------------------------------------
+
+$base: #4c4c4c;
+$alt: #005498;
+
+// Fonts --------------------------------------------------------------
+
+@mixin sans-family {
+  font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+}
+
+@mixin serif-family {
+  font-family: 'Adobe Caslon Pro', Caslon, Baskerville, Palatino, 'Palatino Linotype', "Hoefler Text", Garamond, "URW Palladio L", "Book Antiqua", Georgia, serif;
+}
+
+@mixin monospace-family {
+  font-family: Consolas, Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif;
+}
+
+// OTHER MIXINS --------------------------------------------------------------
+// Mixins set here will be available in defaults, screen, print and IE
+// Or anywhere you import either base.sass or defaults.sass

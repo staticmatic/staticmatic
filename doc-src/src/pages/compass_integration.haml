@@ -1,24 +1,54 @@
 %h1 Compass Integration
 
 = partial "requires_prerelease"
-    
-%p 
-  StaticMatic loves Compass and works with it straight out of the box.  
+
+= content_navigation("What is Compass?", "Using Compass with StaticMatic", "Using Compass's CSS Frameworks")
+
+:markdown
+  <a id="what_is_compass"></a>
+  ## What is Compass?
   
-%p
-  If you'd like to customize your Compass setup, simply create 
-  %pre.code /config/compass.rb
-  and StaticMatic will load it for you automatically.
+  Compass is simply awesome.  It gives you a access huge amount of stylesheet libraries that take much of the duplication out of authoring stylesheets.
   
-%p 
-  For example, you might want to config the output style for your stylesheets:
+  Check out the code for adding borders to a box:
   
-%pre.code
-  :plain
-    /config/compass.rb    
-    output_style = :compact
-      
-    
-%p 
-  For a run down of what you can configure in /config/compass.rb, see:
-  = link "The Compass Configuration Reference", "http://compass-style.org/docs/tutorials/configuration-reference/"
+      .box {
+        @include border-radius(5px)
+      }
+  
+  This compiles to:
+  
+      .box {
+        -moz-border-radius: 5px;
+        -webkit-border-radius: 5px;
+        -o-border-radius: 5px;
+        -ms-border-radius: 5px;
+        -khtml-border-radius: 5px;
+        border-radius: 5px;
+      }
+  
+  Compass also comes with a port of the popular [Blueprint](http://www.blueprintcss.org/) CSS framework and has many plugin frameworks such as [Susy](http://susy.oddbird.net/) & [960.gs](http://960.gs/).
+  
+  <a id="using_compass_with_staticmatic"></a>
+  ## Using Compass with StaticMatic
+  
+  StaticMatic works with Compass out of the box.  You can start using all the great features Compass provides ([read about Compass's core framework here](http://compass-style.org/docs/reference/compass/)).
+  
+  It's also simple to customize the way Compass work.  When you [setup your project](getting_started.html), you'll have a file called <kbd>config/compass.rb</kbd>. You can use this file to configure Compass:
+  
+      output_style = :compressed
+  
+  For a run down of what you can configure in <kbd>config/compass.rb</kbd>, see [The Compass Configuration Reference](http://compass-style.org/docs/tutorials/configuration-reference/)
+
+  <a id="using_compasss_css_frameworks"></a>
+  ## Using Compass's CSS Frameworks
+  
+  Compass's command line tool can generate CSS framework base files for you.  This works seemlessly with StaticMatic.
+  
+  For example, if you'd like to use the Blueprint framework for your project simply run:
+  
+      > compass install blueprint
+  
+  in your project directory.  Compass will then install all of the base stylesheets you need to get started.
+  
+  [Read more about Compass's command line tool here](http://compass-style.org/docs/tutorials/command-line/).

@@ -1,0 +1,33 @@
+/* Welcome to Susy. Use this file to define print styles.
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" /> */
+
+// Imports --------------------------------------------------------------*/
+
+@import "defaults";
+
+/* Print Defaults --------------------------------------------------------------*/
+
+@mixin print {
+  nav {
+    // no need to navigate on paper
+    display: none; 
+  }
+  * {
+    // floated elements disappear when they overflow the page
+    float: none !important; 
+    background: none;
+  }
+  body {
+    @include serif-family;
+    font-size: 12pt;
+    background: white;
+    color: black; 
+  }
+  a:link:after, a:visited:after {
+    // print target URLs next to their links
+    content: " (" attr(href) ") "; 
+  } 
+}
+
+@include print;

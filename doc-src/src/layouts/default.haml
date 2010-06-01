@@ -2,10 +2,15 @@
 %html
   %head
     %title StaticMatic Documentation
-    = stylesheets
+    %link{:rel => "stylesheet", :href => "/stylesheets/screen.css", :media => "screen"}
   %body
-    %ul
-      %li= link "Getting Started"
-      %li= link "Compass Integration"
-      %li= link "Helpers"
-    = yield
+    #header
+      #logo StaticMatic
+    #page
+
+      #menu
+        %ul
+          %li= link "Getting Started"
+          %li= link "Compass Integration"
+          %li= link "Helpers"
+      #content= yield
