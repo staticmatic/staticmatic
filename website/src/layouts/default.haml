@@ -1,0 +1,15 @@
+!!!
+%html
+  %head
+    %title StaticMatic Documentation
+    %link{:rel => "stylesheet", :href => "/stylesheets/screen.css", :media => "screen"}
+  %body
+    #page
+      #header
+        #logo StaticMatic
+        #menu
+          %ul
+            %li= link "Home", "/"
+            %li= link "Documentation", "/docs/getting_started.html"
+            %li= link "Development"
+      #content= yield

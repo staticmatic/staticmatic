@@ -10,23 +10,61 @@
 
 @include susy;
 
+body {
+  background-color: #222;
+}
+
 // change '#page' to match your HTML container element(s)
 #page {
   @include container;
-  @include show-grid("grid.png"); }
-
-#header {
-  background-color: red - #aaa;
-  padding: 1em 1em;
-  @include container;
-  #logo {
-    font-size: 2em;
-    color: #fff;
-    @include serif-family;
-  }
+  @include show-grid("grid.png"); 
+  background-color: #fff;
 
 }
 
+#header {
+
+  background-color: #550000;
+  @include container;
+  #logo {
+    @include columns(2);
+    @include alpha;
+    font-size: 2em;
+    padding: 1em 0.5em;
+    color: #fff;
+    @include serif-family;
+  }
+  
+  @include box-shadow;
+}
+
+#menu {
+  @include columns(4);
+  @include omega;
+
+  @include border-radius(5px);
+  margin: 1em;
+  
+  ul {
+    padding: 1em;
+    @include no-bullets;
+    @include inline-list;
+    
+    li {
+      padding: 0;
+      
+      a {
+        color: #fff;
+      }
+    }
+  }
+}
+
+#content {
+  padding: 2em;
+  @include columns(8);
+  @include alpha;
+}
 // show-grid loads a 64+16x24 grid image by default
 // For other grid settings, run `compass grid-img 30+10x20`
 // Where 30 is the column width, 10 is the gutter width, 
