@@ -1,7 +1,7 @@
 require "rubygems"
 require 'spec/rake/spectask'
 
-require File.dirname(__FILE__) + '/lib/staticmatic'
+require File.expand_path("../lib/staticmatic", __FILE__)
 
 begin
   require 'jeweler'
