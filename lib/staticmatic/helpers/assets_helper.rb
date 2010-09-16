@@ -1,7 +1,7 @@
 
 module StaticMatic
   module Helpers
-    module AssetTagHelper
+    module AssetsHelper
       self.extend self
       
       # Generates links to all stylesheets in the source directory

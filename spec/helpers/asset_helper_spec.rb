@@ -2,7 +2,7 @@
 require File.dirname(__FILE__) + "/../spec_helper"
 
 describe "Helpers:" do
-  include StaticMatic::Helpers::AssetTagHelper
+  include StaticMatic::Helpers::AssetsHelper
   include StaticMatic::Helpers::CurrentPathHelper
   include StaticMatic::Helpers::TagHelper
   before do
