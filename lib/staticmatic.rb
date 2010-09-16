@@ -14,7 +14,7 @@ module StaticMatic
 end
 
 ["render", "build", "setup", "server", "helpers", "rescue"].each do |mixin|
-  require File.expand_path(File.join("..","staticmatic", "mixins", mixin), __FILE__)
+  require File.join(File.dirname(__FILE__), "staticmatic", "mixins", mixin)
 end
 
 ["base", "configuration", "error", "server", "helpers", "template_error", "compass"].each do |lib|

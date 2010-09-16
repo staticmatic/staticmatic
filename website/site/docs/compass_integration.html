@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>StaticMatic Documentation</title>
+    <link href='/stylesheets/screen.css' media='screen' rel='stylesheet' />
+  </head>
+  <body>
+    <div id='page'>
+      <div id='header'>
+        <div id='logo'>StaticMatic</div>
+        <div id='menu'>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/docs/getting_started.html">Documentation</a></li>
+            <li><a href="../development.html">Development</a></li>
+          </ul>
+        </div>
+      </div>
+      <div id='content'>
+        <h1>Compass Integration</h1>
+        <p class='notice'>
+          You'll need to install the pre-release version of StaticMatic to use this feature:
+          <kbd>gem install staticmatic --pre</kbd>
+        </p>
+        <ul><li><a href="#what_is_compass">What is Compass?</a></li><li><a href="#using_compass_with_staticmatic">Using Compass with StaticMatic</a></li><li><a href="#using_compasss_css_frameworks">Using Compass's CSS Frameworks</a></li></ul>
+        <p><a id="what_is_compass"></a></p>
+        
+        <h2>What is Compass?</h2>
+        
+        <p>Compass is simply awesome.  It gives you a access huge amount of stylesheet libraries that take much of the duplication out of authoring stylesheets.</p>
+        
+        <p>Check out the code for adding borders to a box:</p>
+        
+        <pre><code>.box {&#x000A;  @include border-radius(5px)&#x000A;}&#x000A;</code></pre>
+        
+        <p>This compiles to:</p>
+        
+        <pre><code>.box {&#x000A;  -moz-border-radius: 5px;&#x000A;  -webkit-border-radius: 5px;&#x000A;  -o-border-radius: 5px;&#x000A;  -ms-border-radius: 5px;&#x000A;  -khtml-border-radius: 5px;&#x000A;  border-radius: 5px;&#x000A;}&#x000A;</code></pre>
+        
+        <p>Compass also comes with a port of the popular <a href="http://www.blueprintcss.org/">Blueprint</a> CSS framework and has many plugin frameworks such as <a href="http://susy.oddbird.net/">Susy</a> &amp; <a href="http://960.gs/">960.gs</a>.</p>
+        
+        <p><a id="using_compass_with_staticmatic"></a></p>
+        
+        <h2>Using Compass with StaticMatic</h2>
+        
+        <p>StaticMatic works with Compass out of the box.  You can start using all the great features Compass provides (<a href="http://compass-style.org/docs/reference/compass/">read about Compass's core framework here</a>).</p>
+        
+        <p>It's also simple to customize the way Compass work.  When you <a href="getting_started.html">setup your project</a>, you'll have a file called <kbd>config/compass.rb</kbd>. You can use this file to configure Compass:</p>
+        
+        <pre><code>output_style = :compressed&#x000A;</code></pre>
+        
+        <p>For a run down of what you can configure in <kbd>config/compass.rb</kbd>, see <a href="http://compass-style.org/docs/tutorials/configuration-reference/">The Compass Configuration Reference</a></p>
+        
+        <p><a id="using_compasss_css_frameworks"></a></p>
+        
+        <h2>Using Compass's CSS Frameworks</h2>
+        
+        <p>Compass's command line tool can generate CSS framework base files for you.  This works seemlessly with StaticMatic.</p>
+        
+        <p>For example, if you'd like to use the Blueprint framework for your project simply run:</p>
+        
+        <pre><code>&gt; compass install blueprint&#x000A;</code></pre>
+        
+        <p>in your project directory.  Compass will then install all of the base stylesheets you need to get started.</p>
+        
+        <p><a href="http://compass-style.org/docs/tutorials/command-line/">Read more about Compass's command line tool here</a>.</p>
+      </div>
+    </div>
+  </body>
+</html>

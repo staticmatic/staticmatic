@@ -1,0 +1,488 @@
+/* Reset --------------------------------------------------------------*/
+/* line 14, /Users/stephenbartholomew/.rvm/gems/ruby-1.8.7-p249/gems/compass-0.10.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  font-family: inherit;
+  vertical-align: baseline;
+}
+
+/* line 17, /Users/stephenbartholomew/.rvm/gems/ruby-1.8.7-p249/gems/compass-0.10.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+body {
+  line-height: 1;
+  color: black;
+  background: white;
+}
+
+/* line 19, /Users/stephenbartholomew/.rvm/gems/ruby-1.8.7-p249/gems/compass-0.10.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 21, /Users/stephenbartholomew/.rvm/gems/ruby-1.8.7-p249/gems/compass-0.10.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  vertical-align: middle;
+}
+
+/* line 23, /Users/stephenbartholomew/.rvm/gems/ruby-1.8.7-p249/gems/compass-0.10.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 25, /Users/stephenbartholomew/.rvm/gems/ruby-1.8.7-p249/gems/compass-0.10.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+  quotes: "" "";
+}
+/* line 96, /Users/stephenbartholomew/.rvm/gems/ruby-1.8.7-p249/gems/compass-0.10.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+}
+
+/* line 27, /Users/stephenbartholomew/.rvm/gems/ruby-1.8.7-p249/gems/compass-0.10.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none;
+}
+
+/* HTML5 Reset --------------------------------------------------------------*/
+/* line 107, /Users/stephenbartholomew/.rvm/gems/ruby-1.8.7-p249/gems/compass-0.10.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+section, article, aside, header, footer, nav, dialog, figure {
+  display: block;
+}
+
+/* Body --------------------------------------------------------------*/
+/* line 13, website/src/stylesheets/./_defaults.scss */
+body {
+  font-family: 'Adobe Caslon Pro', Caslon, Baskerville, Palatino, 'Palatino Linotype', "Hoefler Text", Garamond, "URW Palladio L", "Book Antiqua", Georgia, serif;
+  color: #4c4c4c;
+}
+
+/* Links --------------------------------------------------------------*/
+/* line 21, website/src/stylesheets/./_defaults.scss */
+a:link, a:visited {
+  color: #005498;
+}
+/* line 24, website/src/stylesheets/./_defaults.scss */
+a:focus, a:hover, a:active {
+  color: #00467f;
+  text-decoration: none;
+}
+/* line 28, website/src/stylesheets/./_defaults.scss */
+a img {
+  border: none;
+}
+
+/* Headings --------------------------------------------------------------*/
+/* line 35, website/src/stylesheets/./_defaults.scss */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+}
+/* line 37, website/src/stylesheets/./_defaults.scss */
+h1 img, h2 img, h3 img, h4 img, h5 img, h6 img {
+  margin: 0;
+}
+
+/* line 42, website/src/stylesheets/./_defaults.scss */
+h1 {
+  font-size: 2em;
+  line-height: 1.5em;
+  margin-bottom: 0.75em;
+}
+
+/* line 47, website/src/stylesheets/./_defaults.scss */
+h2 {
+  font-size: 1.5em;
+  line-height: 1em;
+  margin-bottom: 1em;
+}
+
+/* line 52, website/src/stylesheets/./_defaults.scss */
+h3 {
+  font-size: 1.125em;
+  line-height: 1.333em;
+  margin-bottom: 1.333em;
+}
+
+/* line 57, website/src/stylesheets/./_defaults.scss */
+h4 {
+  font-size: 1em;
+  line-height: 1.5em;
+  margin-bottom: 1.5em;
+}
+
+/* line 62, website/src/stylesheets/./_defaults.scss */
+h5, h6 {
+  margin-bottom: 1.5em;
+  font-weight: bold;
+}
+
+/* Text --------------------------------------------------------------*/
+/* line 69, website/src/stylesheets/./_defaults.scss */
+cite, em, dfn {
+  font-style: italic;
+}
+
+/* line 73, website/src/stylesheets/./_defaults.scss */
+strong, dfn {
+  font-weight: bold;
+}
+
+/* line 77, website/src/stylesheets/./_defaults.scss */
+sup, sub {
+  line-height: 0;
+}
+
+/* line 81, website/src/stylesheets/./_defaults.scss */
+abbr, acronym {
+  border-bottom: 1px dotted;
+  cursor: help;
+}
+
+/* line 86, website/src/stylesheets/./_defaults.scss */
+address {
+  margin-bottom: 1.5em;
+  font-style: italic;
+}
+
+/* line 91, website/src/stylesheets/./_defaults.scss */
+ins {
+  text-decoration: underline;
+}
+
+/* line 95, website/src/stylesheets/./_defaults.scss */
+del {
+  text-decoration: line-through;
+}
+
+/* line 99, website/src/stylesheets/./_defaults.scss */
+pre, code, tt, kbd {
+  font-family: Consolas, Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", monospace, serif;
+  font-size: 0.9em;
+}
+
+/* line 111, website/src/stylesheets/./_defaults.scss */
+pre {
+  white-space: pre;
+}
+
+/* line 115, website/src/stylesheets/./_defaults.scss */
+code {
+  display: block;
+}
+
+/* line 119, website/src/stylesheets/./_defaults.scss */
+q {
+  font-style: italic;
+}
+/* line 121, website/src/stylesheets/./_defaults.scss */
+q em {
+  font-style: normal;
+}
+
+/* line 126, website/src/stylesheets/./_defaults.scss */
+p {
+  margin-bottom: 1.5em;
+}
+
+/* line 130, website/src/stylesheets/./_defaults.scss */
+blockquote, q {
+  quotes: "" "";
+}
+
+/* line 134, website/src/stylesheets/./_defaults.scss */
+blockquote {
+  margin: 1.5em;
+  margin-left: -1.5em;
+  padding-left: 1.5em;
+  border-left: 1px solid;
+  font-family: 'Adobe Caslon Pro', Caslon, Baskerville, Palatino, 'Palatino Linotype', "Hoefler Text", Garamond, "URW Palladio L", "Book Antiqua", Georgia, serif;
+  font-style: italic;
+}
+
+/* line 145, website/src/stylesheets/./_defaults.scss */
+blockquote:before, blockquote:after, q:before, q:after {
+  content: "";
+}
+
+/* Replaced --------------------------------------------------------------*/
+/* line 152, website/src/stylesheets/./_defaults.scss */
+img {
+  vertical-align: bottom;
+}
+
+/* Lists --------------------------------------------------------------*/
+/* line 173, website/src/stylesheets/./_defaults.scss */
+ol {
+  margin: 0 1.5em 1.5em 0;
+  list-style: decimal;
+}
+
+/* line 177, website/src/stylesheets/./_defaults.scss */
+ul {
+  margin: 0 1.5em 1.5em 0;
+  list-style: disc;
+}
+
+/* line 182, website/src/stylesheets/./_defaults.scss */
+li ul, li ol {
+  list-style-type: circle;
+  margin: 0 1.5em 0.75em;
+}
+
+/* line 188, website/src/stylesheets/./_defaults.scss */
+dl {
+  margin-bottom: 1.5em;
+  border-top-style: solid;
+  border-top-width: 0.063em;
+  padding-top: 1.438em;
+}
+/* line 191, website/src/stylesheets/./_defaults.scss */
+dl dt {
+  font-size: 1.125em;
+  line-height: 1.333em;
+  margin-bottom: 0.667em;
+}
+
+/* line 197, website/src/stylesheets/./_defaults.scss */
+dd {
+  margin-bottom: 1.5em;
+  border-bottom-style: solid;
+  border-bottom-width: 0.063em;
+  padding-bottom: 1.438em;
+}
+
+/* Tables --------------------------------------------------------------*/
+/* tables still need 'cellspacing="0"' in the markup */
+/* line 205, website/src/stylesheets/./_defaults.scss */
+table {
+  margin-bottom: 1.5em;
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+/* line 212, website/src/stylesheets/./_defaults.scss */
+table, td, th {
+  vertical-align: top;
+}
+
+/* line 216, website/src/stylesheets/./_defaults.scss */
+th, thead th {
+  font-weight: bold;
+}
+
+/* line 220, website/src/stylesheets/./_defaults.scss */
+th, td, caption {
+  padding: 0.75em;
+  text-align: left;
+  font-weight: normal;
+}
+
+/* line 226, website/src/stylesheets/./_defaults.scss */
+th, td {
+  border-bottom-style: solid;
+  border-bottom-width: 0.063em;
+  padding-bottom: 0.688em;
+}
+
+/* line 230, website/src/stylesheets/./_defaults.scss */
+tfoot {
+  font-size: 0.875em;
+  line-height: 1.714em;
+}
+
+/* line 234, website/src/stylesheets/./_defaults.scss */
+caption {
+  font-size: 1.5em;
+  line-height: 1em;
+  margin-bottom: 1em;
+}
+
+/* Forms --------------------------------------------------------------*/
+/* line 241, website/src/stylesheets/./_defaults.scss */
+fieldset {
+  margin-bottom: 1.5em;
+  border-style: solid;
+  border-width: 0.063em;
+  padding: 1.438em;
+}
+
+/* line 246, website/src/stylesheets/./_defaults.scss */
+legend {
+  font-size: 1.125em;
+  line-height: 1.333em;
+  font-weight: bold;
+}
+
+/* line 251, website/src/stylesheets/./_defaults.scss */
+label {
+  font-weight: bold;
+}
+
+/* line 255, website/src/stylesheets/./_defaults.scss */
+textarea, input:not([type="radio"]) {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+/* line 29, /Users/stephenbartholomew/.rvm/gems/ruby-1.8.7-p249/gems/compass-susy-plugin-0.7.0/sass/susy/././_vertical_rhythm.scss */
+body {
+  font-size: 100%;
+  line-height: 1.5em;
+}
+
+/* line 33, /Users/stephenbartholomew/.rvm/gems/ruby-1.8.7-p249/gems/compass-susy-plugin-0.7.0/sass/susy/././_vertical_rhythm.scss */
+html > body {
+  font-size: 16px;
+}
+
+/* line 18, /Users/stephenbartholomew/.rvm/gems/ruby-1.8.7-p249/gems/compass-susy-plugin-0.7.0/sass/susy/_susy.scss */
+body {
+  text-align: center;
+}
+
+/* line 5 */
+body {
+  background-color: #222;
+}
+
+/* line 10 */
+#page {
+  overflow: hidden;
+  display: inline-block;
+  text-align: left;
+  margin-left: auto;
+  margin-right: auto;
+  width: 61em;
+  max-width: 100%;
+  background-color: #fff;
+}
+/* line 8, /Users/stephenbartholomew/.rvm/gems/ruby-1.8.7-p249/gems/compass-0.10.2/frameworks/compass/stylesheets/compass/utilities/general/./_hacks.scss */
+#page {
+  display: block;
+}
+
+/* line 16 */
+#header {
+  background-color: #550000;
+  overflow: hidden;
+  display: inline-block;
+  text-align: left;
+  margin-left: auto;
+  margin-right: auto;
+  width: 61em;
+  max-width: 100%;
+  -moz-box-shadow: #333333 1px 1px 5px;
+  -webkit-box-shadow: #333333 1px 1px 5px;
+  -o-box-shadow: #333333 1px 1px 5px;
+  box-shadow: #333333 1px 1px 5px;
+}
+/* line 8, /Users/stephenbartholomew/.rvm/gems/ruby-1.8.7-p249/gems/compass-0.10.2/frameworks/compass/stylesheets/compass/utilities/general/./_hacks.scss */
+#header {
+  display: block;
+}
+/* line 20 */
+#header #logo {
+  display: inline;
+  float: left;
+  width: 14.754%;
+  margin-right: 1.639%;
+  margin-left: 1.639%;
+  font-size: 2em;
+  padding: 1em 0.5em;
+  color: #fff;
+  font-family: 'Adobe Caslon Pro', Caslon, Baskerville, Palatino, 'Palatino Linotype', "Hoefler Text", Garamond, "URW Palladio L", "Book Antiqua", Georgia, serif;
+}
+
+/* line 32 */
+#menu {
+  display: inline;
+  float: left;
+  width: 31.148%;
+  margin-right: 1.639%;
+  display: inline;
+  float: right;
+  margin-right: 1.639%;
+  /* ugly hacks for IE6-7 */
+  #margin-left: -1em;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  margin: 1em;
+}
+/* line 39 */
+#menu ul {
+  padding: 1em;
+  list-style: none;
+  list-style-type: none;
+  margin: 0px;
+  padding: 0px;
+  display: inline;
+}
+/* line 11, /Users/stephenbartholomew/.rvm/gems/ruby-1.8.7-p249/gems/compass-0.10.2/frameworks/compass/stylesheets/compass/utilities/lists/_bullets.scss */
+#menu ul li {
+  list-style-image: none;
+  list-style-type: none;
+  margin-left: 0px;
+}
+/* line 8, /Users/stephenbartholomew/.rvm/gems/ruby-1.8.7-p249/gems/compass-0.10.2/frameworks/compass/stylesheets/compass/utilities/lists/_inline-list.scss */
+#menu ul li {
+  margin: 0px;
+  padding: 0px;
+  display: inline;
+}
+/* line 44 */
+#menu ul li {
+  padding: 0;
+}
+/* line 47 */
+#menu ul li a {
+  color: #fff;
+}
+
+/* line 54 */
+#content {
+  padding: 2em;
+  display: inline;
+  float: left;
+  width: 63.934%;
+  margin-right: 1.639%;
+  margin-left: 1.639%;
+}
+
+/* Styles --------------------------------------------------------------*/
+/* line 66 */
+pre {
+  font-size: 0.9em;
+  background-color: #efefef;
+  border: 1px solid #aaa;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  padding: 1em;
+  margin-bottom: 0.5em;
+}

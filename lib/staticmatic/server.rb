@@ -3,6 +3,8 @@ module StaticMatic
     def initialize(staticmatic, default = nil)
       @files = default || Rack::File.new(staticmatic.site_dir)
       @staticmatic = staticmatic
+      
+
     end
 
     def call(env)
@@ -41,6 +43,13 @@ module StaticMatic
 
     # Starts the StaticMatic preview server
     def self.start(staticmatic)
+      [ 'INT', 'TERM' ].each do |signal|
+        Signal.trap(signal) do
+          puts 
+          puts "Exiting"
+          exit!(0)
+        end
+      end
       port = staticmatic.configuration.preview_server_port || 3000
 
       host = staticmatic.configuration.preview_server_host || ""
@@ -48,7 +57,8 @@ module StaticMatic
       app = Rack::Builder.new do
         use Rack::ShowExceptions
         run StaticMatic::Server.new(staticmatic)
-      end
+      end 
+      
       Rack::Handler::WEBrick.run(app, :Port => port, :Host => host)
     end
 
