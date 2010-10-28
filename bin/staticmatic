@@ -10,7 +10,7 @@ if !command || !directory
   exit
 end
 
-$:.push File.join(directory, "lib")
+$:.unshift File.join(directory, "lib")
 
 staticmatic = StaticMatic::Base.new(directory)
 staticmatic.run(command)
