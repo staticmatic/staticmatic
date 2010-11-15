@@ -59,6 +59,7 @@ module StaticMatic
           #specific files requested and in a specific order
           params.each do |file|
             if File.exist?(File.join(@staticmatic.src_dir, 'stylesheets', "#{file}.sass")) ||
+               File.exist?(File.join(@staticmatic.src_dir, 'stylesheets', "#{file}.scss")) || 
                File.exist?(File.join(@staticmatic.site_dir, 'stylesheets', "#{file}.css"))
               options[:href] = File.join(relative_path, "stylesheets", "#{file}.css")
               output << tag(:link, options)
