@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{staticmatic}
-  s.version = "0.11.0.alpha.10"
+  s.version = "0.11.0"
 
-  s.required_rubygems_version = Gem::Requirement.new("> 1.3.1") if s.respond_to? :required_rubygems_version=
+  s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Stephen Bartholomew"]
-  s.date = %q{2010-09-16}
+  s.date = %q{2010-11-15}
   s.default_executable = %q{staticmatic}
   s.description = %q{Lightweight Static Site Framework}
   s.email = %q{steve@curve21.com}
@@ -62,6 +62,7 @@ Gem::Specification.new do |s|
      "spec/rescue_spec.rb",
      "spec/sandbox/test_site/config/compass.rb",
      "spec/sandbox/test_site/config/site.rb",
+     "spec/sandbox/test_site/site/images/grid.png",
      "spec/sandbox/test_site/site/index",
      "spec/sandbox/test_site/site/layout_test",
      "spec/sandbox/test_site/site/sub_folder/another_sub_folder/index.html",
