@@ -97,7 +97,7 @@ module StaticMatic
       compass_config_path = File.join(@base_dir, "config", "compass.rb")
       
       if File.exists?(compass_config_path)
-        Compass.add_configuration(compass_config_path)  
+        Compass.add_configuration(compass_config_path)         
       end
 
       configuration.sass_options.merge!(Compass.configuration.to_sass_engine_options)
