@@ -128,8 +128,6 @@ Gem::Specification.new do |s|
     "spec/sandbox/test_site/config/compass.rb",
     "spec/sandbox/test_site/config/site.rb",
     "spec/sandbox/test_site/src/helpers/application_helper.rb",
-    "spec/sandbox/tmp/config/compass.rb",
-    "spec/sandbox/tmp/config/site.rb",
     "spec/server_spec.rb",
     "spec/setup_spec.rb",
     "spec/spec_helper.rb",
