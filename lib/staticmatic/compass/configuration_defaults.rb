@@ -5,7 +5,11 @@ module Compass
         def project_type_without_default
           :staticmatic
         end
-
+        
+        def http_path
+          "/"
+        end
+        
         def sass_dir_without_default
           "src/stylesheets"
         end
@@ -21,12 +25,13 @@ module Compass
         def images_dir_without_default
           "site/images"
         end
+        
         def default_http_images_path
-          "site/images"
+          "images"
         end
 
         def default_http_javascripts_path
-          "site/javascripts"
+          "javascripts"
         end
         
         def default_cache_dir

@@ -24,6 +24,10 @@ describe "Helpers:" do
     it "should not link to partials" do
       @links.should_not match(/\_forms.css/)
     end
+    
+    it "should setup links for specified stylesheets" do
+      stylesheets(:sassy).should match(/stylesheets\/sassy\.css/)
+    end
   end
   
   context "When using the stylesheet helper from a sub page" do

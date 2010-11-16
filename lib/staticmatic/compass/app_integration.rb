@@ -5,15 +5,12 @@ module Compass
 
       extend self
       
-
-
       def installer(*args)
         Installer.new(*args)
       end
 
       def configuration
-        Compass::Configuration::Data.new('staticmatic').
-          extend(ConfigurationDefaults)
+        Compass::Configuration::Data.new('staticmatic').extend(ConfigurationDefaults)
       end
 
     end

@@ -15,8 +15,8 @@ begin
     gem.authors = ["Stephen Bartholomew"]
     gem.rubyforge_project = "staticmatic"
     
-    gem.files =  FileList["[A-Z]*", "{bin,lib,spec}/**/*"]
-    
+    gem.files.include "[A-Z]*", "{bin,lib,spec}/**/*"
+    gem.files.exclude "spec/sandbox/tmp", "spec/sandbox/test_site/site/*"
     gem.add_dependency("haml", ">=2.0.0")
     gem.add_dependency("rack", ">=1.0")
     gem.add_dependency("compass", ">=0.10.0")
