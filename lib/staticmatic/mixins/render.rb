@@ -107,7 +107,7 @@ module StaticMatic::RenderMixin
   end
 
   def generate_js(source, source_dir = '')
-    full_file_path = Dir[File.join(@src_dir, 'javascripts', source_dir, "#{source}.{coffee}")].first
+    full_file_path = File.join(@src_dir, 'javascripts', source_dir, "#{source}.coffee")
 
     coffee_options = "#{self.configuration.coffee_options} -p"
     javascript = `coffee #{coffee_options} #{full_file_path}`
