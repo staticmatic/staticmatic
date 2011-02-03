@@ -106,6 +106,13 @@ module StaticMatic::RenderMixin
     end
   end
 
+  def generate_js(source, source_dir = '')
+    full_file_path = Dir[File.join(@src_dir, 'javascripts', source_dir, "#{source}.{coffee}")].first
+
+    coffee_options = "#{self.configuration.coffee_options} -p"
+    javascript = `coffee #{coffee_options} #{full_file_path}`
+  end
+
   # Generates html from the passed source string
   #
   # generate_html_from_template_source("%h1 Welcome to My Site") -> "<h1>Welcome to My Site</h1>"

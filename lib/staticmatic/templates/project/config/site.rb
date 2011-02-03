@@ -14,3 +14,6 @@
 # Default is an empty hash
 # http://haml-lang.com/docs/yardoc/file.HAML_REFERENCE.html#options
 # configuration.haml_options = {}
+
+# Default is an empty string
+# configuration.coffee_options = ''
