@@ -51,13 +51,17 @@ module StaticMatic::RenderMixin
   def generate_partial(name, options = {})
     partial_dir, partial_name = File.dirname(self.current_file), name  # default relative to current file
     partial_dir, partial_name = File.split(name) if name.index('/') # contains a path so it's absolute from src/pages dir
-    partial_name = "_#{partial_name}.haml"
+    partial_type = partial_name[/(\.haml|\.html)$/]
+    
+    partial_name = "_#{partial_name}"
+    partial_name += ".haml" unless partial_type
 
     partial_path = File.join(@src_dir, 'pages', partial_dir, partial_name)
     unless File.exists?(partial_path)
       # couldn't find it in the pages subdirectory tree so try old way (ignoring the path)
       partial_dir = 'partials'
-      partial_name = "#{File.basename(name)}.haml"
+      partial_name = "#{File.basename(name)}"
+      partial_name += ".haml" unless partial_type
       partial_path = File.join(@src_dir, partial_dir, partial_name)
     end
   
@@ -65,7 +69,11 @@ module StaticMatic::RenderMixin
       partial_rel_path = "/#{partial_dir}/#{partial_name}".gsub(/\/+/, '/')
       @current_file_stack.unshift(partial_rel_path)
       begin
-        generate_html_from_template_source(File.read(partial_path), options)
+        if partial_type == '.html'
+          File.read(partial_path)
+        else
+          generate_html_from_template_source(File.read(partial_path), options)
+        end
       rescue Exception => e
         raise StaticMatic::TemplateError.new(partial_path, e)
       ensure
