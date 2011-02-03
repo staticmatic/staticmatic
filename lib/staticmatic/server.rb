@@ -13,13 +13,14 @@ module StaticMatic
 
       file_dir, file_name, file_ext = expand_path(path_info)
 
-      # remove stylesheets/ directory if applicable
+      # remove stylesheets/ and javascripts/ directory if applicable
       file_dir.gsub!(/^\/stylesheets\/?/, "")
+      file_dir.gsub!(/^\/javascripts\/?/, "")
       
       file_dir = CGI::unescape(file_dir)
       file_name = CGI::unescape(file_name)
 
-      unless file_ext && ["html", "css"].include?(file_ext) &&
+      unless file_ext && ["html", "css", "js"].include?(file_ext) &&
           @staticmatic.template_exists?(file_name, file_dir) &&
           File.basename(file_name) !~ /^\_/
         return @files.call(env)
@@ -31,6 +32,8 @@ module StaticMatic
       begin
         if file_ext == "css"
           res.write @staticmatic.generate_css(file_name, file_dir)
+        elsif file_ext == "js"
+          res.write @staticmatic.generate_js(file_name, file_dir)
         else
           res.write @staticmatic.generate_html_with_layout(file_name, file_dir)
         end
