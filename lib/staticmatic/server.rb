@@ -1,7 +1,7 @@
 module StaticMatic
   class Server
     def initialize(staticmatic, default = nil)
-      @files = default || Rack::File.new(staticmatic.site_dir)
+      @files = default || Rack::File.new(staticmatic.src_dir)
       @staticmatic = staticmatic
       
 

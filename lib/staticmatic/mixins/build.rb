@@ -4,6 +4,7 @@ module StaticMatic::BuildMixin
     build_css
     build_js
     build_html
+    copy_images
   end
     
   # Build HTML from the source files
@@ -34,9 +35,23 @@ module StaticMatic::BuildMixin
         save_javascript(File.join(file_dir, template), generate_js(template, file_dir))
       end
     end
+    # copy normal javascript files over
+    Dir["#{@src_dir}/javascripts/**/*.js"].each do |path|
+      file_dir, template = source_template_from_path(path.sub(/^#{@src_dir}\/javascripts/, ''))
+      copy_file(path, File.join(@site_dir, 'javascripts', file_dir, "#{template}.js"))
+    end
+  end
+  
+  def copy_images
+    img_exts = ['giff,jpg,jpeg,png,tiff'];
+    Dir["#{@src_dir}/images/**/*.{#{ img_exts.join(',') }}"].each do |path|
+      file_dir, file_name = File.split(path.sub(/^#{@src_dir}\/images/, ''))
+      copy_file(path, File.join(@site_dir, 'images', file_dir, file_name))
+    end
   end
 
   def copy_file(from, to)
+    FileUtils.mkdir_p(File.dirname(to))
     FileUtils.cp(from, to)
   end
 
