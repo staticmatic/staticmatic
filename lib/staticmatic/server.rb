@@ -21,7 +21,7 @@ module StaticMatic
       file_name = CGI::unescape(file_name)
 
       unless file_ext && ["html", "css", "js"].include?(file_ext) &&
-          @staticmatic.template_exists?(file_name, file_dir) &&
+          @staticmatic.template_exists?(file_name, file_ext, file_dir) &&
           File.basename(file_name) !~ /^\_/
         return @files.call(env)
       end
@@ -75,7 +75,7 @@ module StaticMatic
 
       if extname.empty?
         dir = File.join(dirname, filename)
-        is_dir = path_info[-1, 1] == '/' || (@staticmatic.template_directory?(dir) && !@staticmatic.template_exists?(filename, dirname))
+        is_dir = path_info[-1, 1] == '/' || (@staticmatic.template_directory?(dir) && !@staticmatic.template_exists?(filename, extname, dirname))
         if is_dir
           dirname = dir
           filename = 'index'

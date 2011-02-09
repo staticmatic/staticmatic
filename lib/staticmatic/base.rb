@@ -75,11 +75,15 @@ module StaticMatic
     end
       
     # TODO: DRY this _exists? section up
-    def template_exists?(name, dir = '')
-      File.exists?(File.join(@src_dir, 'pages', dir, "#{name}.haml"))    ||
-      File.exists?(File.join(@src_dir, 'stylesheets', "#{name}.sass"))   ||
-      File.exists?(File.join(@src_dir, 'stylesheets', "#{name}.scss"))   ||
-      File.exists?(File.join(@src_dir, 'javascripts', "#{name}.coffee"))
+    def template_exists?(name, ext, dir = '')
+      # TODO: generate this data from a config file or something
+      path = {
+        'html' => [['pages',       dir, "#{name}.haml"]],
+        'css'  => [['stylesheets', dir, "#{name}.sass"],
+                   ['stylesheets', dir, "#{name}.scss"]],
+        'js'   => [['javascripts', dir, "#{name}.coffee"]]
+      }
+      path[ext] && path[ext].map {|p| File.exists? File.join(@src_dir, *p) }.any?
     end
     
     def layout_exists?(name)
