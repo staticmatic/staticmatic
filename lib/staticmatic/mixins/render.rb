@@ -82,6 +82,7 @@ module StaticMatic::RenderMixin
 
     if full_file_path && File.exist?(full_file_path)
       begin
+        sass_options = self.configuration.sass_options
 
         if File.extname(full_file_path) == ".scss"
           sass_options[:syntax] = :scss
