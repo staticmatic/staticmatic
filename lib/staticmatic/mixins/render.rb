@@ -1,13 +1,13 @@
 module StaticMatic::RenderMixin
-  
+
   # clear all scope variables except @staticmatic
   def clear_template_variables!
-    
+
     @scope.instance_variables.each do |var|
       @scope.instance_variable_set(var, nil) unless var == '@staticmatic' || var == :@staticmatic
     end
   end
-  
+
   def source_for_layout
     if layout_exists?(determine_layout)
       File.read(full_layout_path(determine_layout))
@@ -36,7 +36,7 @@ module StaticMatic::RenderMixin
   def generate_html_with_layout(source, source_dir = '')
     @current_page = File.join(source_dir, "#{source}.html")
     @current_file_stack.unshift(File.join(source_dir, "#{source}.haml"))
-    begin 
+    begin
       template_content = generate_html(source, source_dir)
       generate_html_from_template_source(source_for_layout) { template_content }
     rescue Exception => e
@@ -60,7 +60,7 @@ module StaticMatic::RenderMixin
       partial_name = "#{File.basename(name)}.haml"
       partial_path = File.join(@src_dir, partial_dir, partial_name)
     end
-  
+
     if File.exists?(partial_path)
       partial_rel_path = "/#{partial_dir}/#{partial_name}".gsub(/\/+/, '/')
       @current_file_stack.unshift(partial_rel_path)
@@ -82,12 +82,11 @@ module StaticMatic::RenderMixin
 
     if full_file_path && File.exist?(full_file_path)
       begin
-        sass_options = { :load_paths => [ File.join(@src_dir, 'stylesheets') ] }.merge(self.configuration.sass_options)
-      
+
         if File.extname(full_file_path) == ".scss"
           sass_options[:syntax] = :scss
         end
-      
+
         stylesheet = Sass::Engine.new(File.read(full_file_path), sass_options)
         stylesheet.to_css
       rescue Exception => e
@@ -114,21 +113,21 @@ module StaticMatic::RenderMixin
 
   def determine_layout(dir = '')
     layout_name ||= @default_layout
-  
+
     if @scope.instance_variable_get("@layout")
       layout_name = @scope.instance_variable_get("@layout")
     elsif dir
       dirs = dir.split("/")
       dir_layout_name = dirs[1]
-    
+
       if layout_exists?(dir_layout_name)
         layout_name = dir_layout_name
       end
     end
 
-    layout_name 
+    layout_name
   end
-    
+
   # Returns a raw template name from a source file path:
   # source_template_from_path("/path/to/site/src/stylesheets/application.sass")  ->  "application"
   def source_template_from_path(path)
