@@ -13,7 +13,7 @@ describe "StaticMatic::Setup" do
     site/images
     site/javascripts
     site/stylesheets
-    src/layouts/site.haml
+    src/layouts/default.haml
     src/pages/index.haml
     src/stylesheets/screen.sass
     config/site.rb
