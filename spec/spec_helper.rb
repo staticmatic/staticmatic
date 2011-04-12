@@ -14,3 +14,18 @@ end
 def setup_staticmatic
   @staticmatic = StaticMatic::Base.new(TEST_SITE_PATH)
 end
+
+# Supresses STDOUT use by methods, to avoid polluting the tests. Returns a
+# StringIO object containing the data received during the block execution.
+def supress_stdout
+  mock_io = StringIO.new
+  stdout_real, $stdout = $stdout, mock_io
+  if block_given?
+    begin
+      yield
+    ensure
+      $stdout = stdout_real
+    end
+  end
+  mock_io
+end
