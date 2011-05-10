@@ -1,6 +1,7 @@
 # StaticMatic
 
-*For information on Haml & Sass please see [haml.hamptoncatlin.com](http://haml.hamptoncatlin.com)*.
+*For information on Haml & Sass please see [haml-lang.com](http://haml-lang.com) and
+[sass-lang.com](http://sass-lang.com)*.
 
 ## What's it all about?
 
