@@ -2,7 +2,7 @@ module StaticMatic
   module Helpers
     module CurrentPathHelper
       self.extend self
-      
+
       def current_page
         @staticmatic.current_page
       end

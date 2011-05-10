@@ -2,7 +2,7 @@ module StaticMatic
   module Helpers
     module TagHelper
       self.extend self
-      
+
       # Generates HTML tags:
       #
       # tag(:br)   ->   <br/>
@@ -14,14 +14,14 @@ module StaticMatic
         options.keys.sort { |a, b| a.to_s <=> b.to_s }.each do |key|
           output << " #{key}=\"#{options[key]}\"" if options[key]
         end
-        
+
         if block_given?
           output << ">"
           output << yield
           output << "</#{name}>"
         else
           format = @staticmatic.configuration.haml_options[:format]
-          
+
           if format.nil? || format == :xhtml
             output << "/>"
           else

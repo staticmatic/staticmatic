@@ -9,5 +9,4 @@ describe "StaticMatic::Base" do
     @staticmatic.configuration.use_extensions_for_page_links.should == true
     @staticmatic.configuration.preview_server_port.should == 3000
   end
-
 end

@@ -3,8 +3,6 @@ module StaticMatic
     def initialize(staticmatic, default = nil)
       @files = default || Rack::File.new(staticmatic.site_dir)
       @staticmatic = staticmatic
-      
-
     end
 
     def call(env)
@@ -15,7 +13,7 @@ module StaticMatic
 
       # remove stylesheets/ directory if applicable
       file_dir.gsub!(/^\/stylesheets\/?/, "")
-      
+
       file_dir = CGI::unescape(file_dir)
       file_name = CGI::unescape(file_name)
 
@@ -45,20 +43,20 @@ module StaticMatic
     def self.start(staticmatic)
       [ 'INT', 'TERM' ].each do |signal|
         Signal.trap(signal) do
-          puts 
+          puts
           puts "Exiting"
           exit!(0)
         end
       end
-      port = staticmatic.configuration.preview_server_port || 3000
 
+      port = staticmatic.configuration.preview_server_port || 3000
       host = staticmatic.configuration.preview_server_host || ""
 
       app = Rack::Builder.new do
         use Rack::ShowExceptions
         run StaticMatic::Server.new(staticmatic)
-      end 
-      
+      end
+
       Rack::Handler::WEBrick.run(app, :Port => port, :Host => host)
     end
 

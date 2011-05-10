@@ -4,7 +4,7 @@
 
 ## What's it all about?
 
-CMS is overrated.  A lot of the time, clients want us to do what we do 
+CMS is overrated.  A lot of the time, clients want us to do what we do
 best - well designed pages with structured, accessible and maintainable markup & styling.
 
 CMSs are often perfect for this, but sometimes they can be restrictive and more cumbersome
@@ -41,7 +41,7 @@ StaticMatic sets you up with a sample layout, stylesheet and page file.  Once yo
 edited the pages and stylesheets, you can generate the static site:
 
     staticmatic build <directory>
-    
+
 All of the pages are parsed and wrapped up in default.haml and put into the site directory.
 
 ## Templates

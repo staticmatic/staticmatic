@@ -9,10 +9,8 @@
       = @exception.filename
 
     %p= @exception.original_exception.message
-  
+
     = @exception.source_extract.gsub(/\n/, "<br/>")
 
-
     %h2 Backtrace
-
     = @exception.backtrace.join("<br/>")

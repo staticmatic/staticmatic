@@ -8,7 +8,6 @@ require 'rack/handler/webrick'
 require 'cgi'
 require 'fileutils'
 
-
 module StaticMatic
   VERSION = "0.11.0"
 end
@@ -22,4 +21,3 @@ end
 end
 
 Haml::Helpers.class_eval("include StaticMatic::Helpers")
-
