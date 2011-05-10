@@ -16,9 +16,10 @@ begin
     gem.email = "steve@curve21.com"
     gem.homepage = "http://staticmatic.net"
 
-    gem.files.include "[A-Z]*", "{bin,lib,spec}/**/*"
-    gem.files.exclude "spec/sandbox/tmp", "spec/sandbox/test_site/site/*"
+    gem.files.include "{bin,lib}/**/*"
+    gem.files.exclude "spec/*", "website/*"
     gem.executables = "staticmatic"
+
     gem.add_dependency("haml", ">=2.0.0")
     gem.add_dependency("rack", ">=1.0")
     gem.add_dependency("compass", ">=0.10.0")
