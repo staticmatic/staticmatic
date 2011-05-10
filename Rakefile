@@ -9,16 +9,16 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "staticmatic"
-    gem.executables = "staticmatic"
-    gem.summary = "Lightweight Static Site Framework"
+    gem.summary = "Lightweight static site framework"
+    gem.description = "StaticMatic is a lightweight framework for building easy to maintain static sites"
+    gem.rubyforge_project = "staticmatic"
+    gem.authors = ["Stephen Bartholomew"]
     gem.email = "steve@curve21.com"
     gem.homepage = "http://staticmatic.net"
-    gem.description = "Lightweight Static Site Framework"
-    gem.authors = ["Stephen Bartholomew"]
-    gem.rubyforge_project = "staticmatic"
 
     gem.files.include "[A-Z]*", "{bin,lib,spec}/**/*"
     gem.files.exclude "spec/sandbox/tmp", "spec/sandbox/test_site/site/*"
+    gem.executables = "staticmatic"
     gem.add_dependency("haml", ">=2.0.0")
     gem.add_dependency("rack", ">=1.0")
     gem.add_dependency("compass", ">=0.10.0")
