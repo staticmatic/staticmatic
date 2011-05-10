@@ -3,6 +3,8 @@ require 'spec/rake/spectask'
 
 require File.expand_path("../lib/staticmatic", __FILE__)
 
+task :default => [:spec]
+
 begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
