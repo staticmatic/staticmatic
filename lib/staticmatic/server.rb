@@ -11,7 +11,7 @@ module StaticMatic
       @staticmatic.load_helpers
       path_info = env["PATH_INFO"]
 
-      file_dir, file_name, file_ext = expand_path(path_info)
+      locale, file_dir, file_name, file_ext = expand_path(path_info)
 
       # remove stylesheets/ directory if applicable
       file_dir.gsub!(/^\/stylesheets\/?/, "")
@@ -32,6 +32,11 @@ module StaticMatic
         if file_ext == "css"
           res.write @staticmatic.generate_css(file_name, file_dir)
         else
+          if locale != ""
+            @staticmatic.translation.prepare
+            @staticmatic.translation.disable_caching
+            @staticmatic.translation.current_locale = locale
+          end
           res.write @staticmatic.generate_html_with_layout(file_name, file_dir)
         end
       rescue StaticMatic::Error => e
@@ -66,6 +71,11 @@ module StaticMatic
 
     def expand_path(path_info)
       dirname, basename = File.split(path_info)
+      if @staticmatic.translation.should_translate?
+        locale, dirname = get_locale_from_dirpath(dirname)
+      else
+        locale = ""
+      end
 
       extname = File.extname(path_info).sub(/^\./, '')
       filename = basename.chomp(".#{extname}")
@@ -80,7 +90,16 @@ module StaticMatic
         extname = 'html'
       end
 
-      [ dirname, filename, extname ]
+      [ locale, dirname, filename, extname ]
+    end
+
+    def get_locale_from_dirpath(path)
+      locale, html_file = path[1..-1].split("/", 2)
+      if @staticmatic.translation.available_locales.include? locale
+        return locale.to_s, "/"+html_file.to_s
+      else
+        return "", path
+      end
     end
   end
 end

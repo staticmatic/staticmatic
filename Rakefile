@@ -20,6 +20,7 @@ begin
     gem.add_dependency("haml", ">=2.0.0")
     gem.add_dependency("rack", ">=1.0")
     gem.add_dependency("compass", ">=0.10.0")
+    gem.add_dependency("gettext", ">=2.1.0")
   end
 rescue LoadError
   puts "Jeweler, or one of its dependencies, is not available. Install it with: gem install jeweler"
