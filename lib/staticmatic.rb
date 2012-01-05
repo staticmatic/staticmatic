@@ -1,3 +1,6 @@
+# HACK
+require File.join(File.dirname(__FILE__), "staticmatic", "backward_compatibility")
+
 require 'rubygems'
 require 'compass'
 require 'haml'
@@ -11,7 +14,6 @@ require 'gettext'
 require 'gettext/tools'
 require 'gettext/tools/rgettext'
 require 'gettext/tools/parser/ruby'
-
 
 module StaticMatic
   VERSION = "0.11.0"
