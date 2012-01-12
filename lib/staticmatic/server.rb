@@ -37,7 +37,15 @@ module StaticMatic
             @staticmatic.translation.disable_caching
             @staticmatic.translation.current_locale = locale
           end
+
+          # Call generator_sitemap through all the pages
+          @staticmatic.generate_site_map
+
+          # Write in the stdout the current path
           res.write @staticmatic.generate_html_with_layout(file_name, file_dir)
+
+          # Clear the hash to the next access
+          @staticmatic.site_map.clear
         end
       rescue StaticMatic::Error => e
         res.write e.message

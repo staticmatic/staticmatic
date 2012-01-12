@@ -1,6 +1,9 @@
 module StaticMatic::BuildMixin
     
   def build
+    # Generate the sitemap
+    generate_site_map
+
     build_css
     build_html
   end

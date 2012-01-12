@@ -5,12 +5,13 @@ module StaticMatic
     include StaticMatic::BuildMixin
     include StaticMatic::SetupMixin
     include StaticMatic::HelpersMixin    
+    include StaticMatic::SitemapMixin
     include StaticMatic::ServerMixin    
     include StaticMatic::RescueMixin    
     include StaticMatic::UpdatepoMixin
   
     attr_accessor :configuration
-    attr_reader :current_page, :src_dir, :site_dir, :translation
+    attr_reader :current_page, :src_dir, :site_dir, :translation, :site_map
 
     def current_file
       @current_file_stack[0] || ""
@@ -19,6 +20,7 @@ module StaticMatic
     def initialize(base_dir, configuration = Configuration.new)
       @configuration = configuration
       @current_page = nil
+      @site_map = Hash.new()
       @current_file_stack = []
       @base_dir = base_dir
       @src_dir = File.join(@base_dir, "src")

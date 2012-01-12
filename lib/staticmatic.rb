@@ -19,7 +19,7 @@ module StaticMatic
   VERSION = "0.11.0"
 end
 
-["render", "build", "setup", "server", "helpers", "rescue", "updatepo"].each do |mixin|
+["render", "build", "setup", "server", "helpers", "sitemap", "rescue", "updatepo"].each do |mixin|
   require File.join(File.dirname(__FILE__), "staticmatic", "mixins", mixin)
 end
 
