@@ -34,7 +34,7 @@ module StaticMatic::SitemapMixin
 	end
 
 	# Method to add elements in the site map
-	def add_to_sitemap(category, title, link)
+	def add_to_site_map(category, title, link)
 		@site_map[category] ||= []
 		@site_map[category] << { title => link }
 	end
