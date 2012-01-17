@@ -24,7 +24,7 @@ module StaticMatic::SitemapMixin
 						else
 							link = path.gsub("#{@src_dir}/pages" , "").gsub("/index.haml", "").gsub(".haml", "")
 						end
-						add_to_sitemap(category, title, link)
+						add_to_site_map(category, title, link)
 					end
 				end
 			rescue EOFError
@@ -37,5 +37,29 @@ module StaticMatic::SitemapMixin
 	def add_to_site_map(category, title, link)
 		@site_map[category] ||= []
 		@site_map[category] << { title => link }
-	end
+  end
+
+  # Method to sort the categories sitemap.
+  def set_site_map_order(list)
+    @site_map_categories = list + @site_map.keys
+    @site_map_categories.uniq!
+
+    @site_map_categories.each do |category|
+      if !@site_map.keys.include?(category)
+        puts "ERROR: Category doesn't include in this site!"
+      end
+    end
+
+    @site_map.each_value { |v| v.sort! { |a, b| a.keys <=> b.keys } }
+  end
+
+  # Method that returns the categories sitemap
+  def get_site_map_categories
+    return @site_map_categories
+  end
+
+  # Method that returns the items sitemap
+  def get_site_map_items(category)
+    return @site_map[category]
+  end
 end

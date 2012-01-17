@@ -11,16 +11,17 @@ module StaticMatic
     include StaticMatic::UpdatepoMixin
   
     attr_accessor :configuration
-    attr_reader :current_page, :src_dir, :site_dir, :translation, :site_map
+    attr_reader :current_page, :src_dir, :site_dir, :translation, :site_map, :site_map_categories
 
     def current_file
       @current_file_stack[0] || ""
     end
-    
+
     def initialize(base_dir, configuration = Configuration.new)
       @configuration = configuration
       @current_page = nil
       @site_map = Hash.new()
+      @site_map_categories = Array.new()
       @current_file_stack = []
       @base_dir = base_dir
       @src_dir = File.join(@base_dir, "src")
