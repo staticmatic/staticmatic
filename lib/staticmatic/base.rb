@@ -4,11 +4,13 @@ module StaticMatic
     include StaticMatic::BuildMixin
     include StaticMatic::SetupMixin
     include StaticMatic::HelpersMixin
+    include StaticMatic::SitemapMixin
     include StaticMatic::ServerMixin
     include StaticMatic::RescueMixin
+    include StaticMatic::UpdatepoMixin
 
     attr_accessor :configuration
-    attr_reader :current_page, :src_dir, :site_dir
+    attr_reader :current_page, :src_dir, :site_dir, :translation, :site_map, :site_map_categories
 
     def current_file
       @current_file_stack[0] || ""
@@ -17,6 +19,8 @@ module StaticMatic
     def initialize(base_dir, configuration = Configuration.new)
       @configuration = configuration
       @current_page = nil
+      @site_map = Hash.new()
+      @site_map_categories = Array.new()
       @current_file_stack = []
       @base_dir = base_dir
       @src_dir = File.join(@base_dir, "src")
@@ -36,6 +40,8 @@ module StaticMatic
       configure_compass
 
       load_helpers
+
+      @translation = Translation.new(self)
     end
 
     def load_configuration
@@ -66,7 +72,7 @@ module StaticMatic
     def run(command)
       puts "Site root is: #{@base_dir}"
 
-      if %w(build setup preview).include?(command)
+      if %w(build setup preview updatepo).include?(command)
         send(command)
       else
         puts "#{command} is not a valid StaticMatic command"
@@ -84,6 +90,11 @@ module StaticMatic
 
     def template_directory?(path)
       File.directory?(File.join(@src_dir, 'pages', path))
+    end
+
+    def should_translate?
+      locales = configuration.available_locales
+      !(locales.nil? || locales.empty?)
     end
 
     def full_layout_path(name)
