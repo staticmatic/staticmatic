@@ -2,7 +2,7 @@ require 'rubygems'
 require 'stringio'
 require 'spec'
 
-require File.expand_path('../lib/staticmatic')
+require File.expand_path('lib/staticmatic')
 
 unless defined? TEST_SITE_PATH
   TEST_SITE_PATH = File.expand_path(File.join(File.dirname(__FILE__), "sandbox", "test_site"))
