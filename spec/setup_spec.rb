@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + "/spec_helper"
+require File.expand_path(File.dirname(__FILE__) + "/spec_helper")
 
 describe "StaticMatic::Setup" do
   it "should set up project directory in given path" do
@@ -9,7 +9,7 @@ describe "StaticMatic::Setup" do
       staticmatic.run('setup')
     end
     stringio.rewind
-    stringio.read.should eql("Site root is: ./spec/sandbox/tmp\nDone\n")
+    stringio.read.should eql("Site root is: spec/sandbox/tmp\nDone\n")
     %w(
     site/images
     site/javascripts

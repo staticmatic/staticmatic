@@ -1,10 +1,10 @@
-require File.dirname(__FILE__) + "/spec_helper"
+require File.expand_path(File.dirname(__FILE__) + "/spec_helper")
 
 describe "StaticMatic::Updatepo" do
   module GetText
     def update_pofiles(textdomain, files, app_version, options = {})
       textdomain.should == 'tmp'
-      files.should == ['./spec/sandbox/tmp/src/pages/index.haml', './spec/sandbox/tmp/src/layouts/default.haml']
+      files.should == ['spec/sandbox/tmp/src/pages/index.haml', 'spec/sandbox/tmp/src/layouts/default.haml']
       app_version.should == nil
       options.should == {:po_root => File.expand_path(File.dirname(__FILE__) + '/sandbox/tmp/locale')}
     end

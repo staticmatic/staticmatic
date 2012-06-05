@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + "/spec_helper"
+require File.expand_path(File.dirname(__FILE__) + "/spec_helper")
 
 describe "StaticMatic::Build" do
   class Object
@@ -33,9 +33,9 @@ describe "StaticMatic::Build" do
       @staticmatic.build_html
     end
     stringio.rewind
-    stringio.read.should eql("created ./spec/sandbox/tmp/site/index.html\n" +
-                             "created ./spec/sandbox/tmp/site/en/index.html\n" +
-                             "created ./spec/sandbox/tmp/site/pt_BR/index.html\n")
+    stringio.read.should eql("created spec/sandbox/tmp/site/index.html\n" +
+                             "created spec/sandbox/tmp/site/en/index.html\n" +
+                             "created spec/sandbox/tmp/site/pt_BR/index.html\n")
 
     %w(
       locale/en/LC_MESSAGES/tmp.mo
@@ -51,7 +51,7 @@ describe "StaticMatic::Build" do
       @staticmatic.build_html
     end
     stringio.rewind
-    stringio.read.should eql("created ./spec/sandbox/tmp/site/index.html\n")
+    stringio.read.should eql("created spec/sandbox/tmp/site/index.html\n")
 
     path = 'site/index.html'
     File.exists?(File.join(@tmp_dir, path)).should(be_true, "#{path} expected to exist in #{@tmp_dir}")
