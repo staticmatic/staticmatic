@@ -59,8 +59,8 @@ describe "StaticMatic::Build" do
 
   it "should insert translation methods in haml" do
     $staticmatic_haml_method_calls_counter = []
-    haml = Haml::Engine.new("%h1 test string\n%h2 another test string\n%p= _('yet another test string')\nplain test string")
+    haml = Haml::Engine.new("%h1 test string\n%h2 another test string\n%p= _('yet another test string')\nplain test string\n= _('translatable script string')")
     haml.render
-    $staticmatic_haml_method_calls_counter.should == ["test string", "another test string", "plain test string", "yet another test string"]
+    $staticmatic_haml_method_calls_counter.should == ["test string", "another test string", "yet another test string", "translatable script string"]
   end
 end

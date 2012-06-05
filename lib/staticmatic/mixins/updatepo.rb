@@ -32,13 +32,25 @@ module StaticMatic::UpdatepoMixin
       def get_staticmatic_translation_code
         (@staticmatic_translation or []).collect do |text|
           "_(\"#{text}\")"
-        end + self.precompiled.split(/$/)
+        end + (@staticmatic_parseable_text or []) +
+          self.precompiled.split(/$/)
+      end
+
+      def script(text, escape_html = nil, preserve = false)
+        script_node = super(text, escape_html = nil, preserve = false)
+        add_script_to_parseable_text(script_node.value[:text])
+        return script_node
       end
 
       private
       def add_text_to_staticmatic_translation(text)
         @staticmatic_translation ||= []
         @staticmatic_translation << text
+      end
+
+      def add_script_to_parseable_text(text)
+        @staticmatic_parseable_text ||= []
+        @staticmatic_parseable_text << text
       end
     end
 
