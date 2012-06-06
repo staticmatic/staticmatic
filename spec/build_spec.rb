@@ -1,14 +1,6 @@
 require File.expand_path(File.dirname(__FILE__) + "/spec_helper")
 
 describe "StaticMatic::Build" do
-  class Object
-    def _(text)
-      $staticmatic_haml_method_calls_counter ||= []
-      $staticmatic_haml_method_calls_counter << text
-      super(text)
-    end
-  end
-
   before do
     @tmp_dir = File.dirname(__FILE__) + '/sandbox/tmp'
     @locale_dir = File.expand_path File.join(@tmp_dir, 'locale')
@@ -58,9 +50,11 @@ describe "StaticMatic::Build" do
   end
 
   it "should insert translation methods in haml" do
-    $staticmatic_haml_method_calls_counter = []
-    haml = Haml::Engine.new("%h1 test string\n%h2 another test string\n%p= _('yet another test string')\nplain test string\n= _('translatable script string')")
+    haml = Haml::Engine.new("%h1 test string\n%h2 another test string\n%p= _('yet another test string')\nplain test string\n= _('translatable script string')\n%h1\n  Test translatable h1 string\n= \"not translatable\"")
     haml.render
-    $staticmatic_haml_method_calls_counter.should == ["test string", "another test string", "yet another test string", "translatable script string"]
+    ["_(\"test string\")", "_(\"another test string\")", "_(\"plain test string\")", "_(\"Test translatable h1 string\")", "_('yet another test string')", " _('translatable script string')"].each do |string|
+      haml.get_staticmatic_translation_code.should include(string)
+    end
+    haml.get_staticmatic_translation_code.should_not include("_(\"not translatable\")")
   end
 end

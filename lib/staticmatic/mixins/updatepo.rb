@@ -29,7 +29,7 @@ module StaticMatic::UpdatepoMixin
       end
 
       # Overriden function that producted Haml plain text
-      def push_plain(text)
+      def plain(text)
         add_text_to_staticmatic_translation(text)
         super(text)
       end
