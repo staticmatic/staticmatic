@@ -16,7 +16,13 @@ module StaticMatic::UpdatepoMixin
         tag_name, attributes, attributes_hash, object_ref, nuke_outer_whitespace,
         nuke_inner_whitespace, action, value = super(line)
 
-        add_text_to_staticmatic_translation(value) unless action || value.empty?
+        unless value.empty?
+          if action
+            add_script_to_parseable_text(value)
+          else
+            add_text_to_staticmatic_translation(value)
+          end
+        end
 
         [tag_name, attributes, attributes_hash, object_ref, nuke_outer_whitespace,
          nuke_inner_whitespace, action, value]
