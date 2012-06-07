@@ -74,7 +74,7 @@ module StaticMatic::BuildMixin
 
   module HamlGettext
     # Inject _ gettext into plain text and tag plain text calls
-    def push_plain(text)
+    def plain(text)
       super _(text)
     end
 
