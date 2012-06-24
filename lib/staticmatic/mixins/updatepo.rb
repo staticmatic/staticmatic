@@ -37,7 +37,7 @@ module StaticMatic::UpdatepoMixin
       # Injects _ gettext call for translatable text
       def get_staticmatic_translation_code
         (@staticmatic_translation or []).collect do |text|
-          "_(\"#{text}\")"
+          "_(\"#{text.gsub("\"", "\\\"")}\")"
         end + (@staticmatic_parseable_text or []) +
           self.precompiled.split(/$/)
       end

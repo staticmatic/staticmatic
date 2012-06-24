@@ -50,9 +50,9 @@ describe "StaticMatic::Build" do
   end
 
   it "should insert translation methods in haml" do
-    haml = Haml::Engine.new("%h1 test string\n%h2 another test string\n%p= _('yet another test string')\nplain test string\n= _('translatable script string')\n%h1\n  Test translatable h1 string\n= \"not translatable\"")
+    haml = Haml::Engine.new("%h1 test string\n%h2 another test string\n%p= _('yet another test string')\nplain test string\n= _('translatable script string')\n%h1\n  Test translatable h1 string\n= \"not translatable\"\ntranslate \"this\", please")
     haml.render
-    ["_(\"test string\")", "_(\"another test string\")", "_(\"plain test string\")", "_(\"Test translatable h1 string\")", "_('yet another test string')", " _('translatable script string')"].each do |string|
+    ["_(\"test string\")", "_(\"another test string\")", "_(\"plain test string\")", "_(\"Test translatable h1 string\")", "_('yet another test string')", " _('translatable script string')", "_(\"translate \\\"this\\\", please\")"].each do |string|
       haml.get_staticmatic_translation_code.should include(string)
     end
     haml.get_staticmatic_translation_code.should_not include("_(\"not translatable\")")
