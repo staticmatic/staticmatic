@@ -71,9 +71,10 @@ module StaticMatic::UpdatepoMixin
     def parse(file, ary = [])
       haml = Haml::Engine.new(IO.readlines(file).join)
       code = haml.get_staticmatic_translation_code
-      GetText::RubyParser.parse_lines(file, code, ary)
+      GetText::RubyParser.parse_lines(file, code)
     end
 
-    GetText::RGetText.add_parser(HamlParser)
+    require 'gettext/tools/xgettext'
+    GetText::Tools::XGetText.add_parser(HamlParser)
   end
 end

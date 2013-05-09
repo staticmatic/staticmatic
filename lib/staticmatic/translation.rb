@@ -1,5 +1,8 @@
 module StaticMatic
   class Translation
+    require 'gettext'
+    require 'gettext/tools'
+
     def initialize(base)
       @base = base
     end
@@ -44,10 +47,13 @@ module StaticMatic
     def update_pofiles(files_to_translate)
       locale_dir = File.expand_path(File.join @base.base_dir, 'locale')
       FileUtils.mkdir_p locale_dir
+
+      msgmerge = %w[--sort-output --no-location --no-wrap]
       GetText.update_pofiles(get_domain,
                              files_to_translate,
                              nil,
-                             :po_root => locale_dir)
+                             :po_root => locale_dir,
+                             :msgmerge => msgmerge)
     end
   end
 

@@ -32,20 +32,20 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<haml>, ["3.1.3"])
       s.add_runtime_dependency(%q<rack>, ["1.3.4"])
       s.add_runtime_dependency(%q<compass>, ["0.11.1"])
-      s.add_runtime_dependency(%q<gettext>, ["2.1.0"])
+      s.add_runtime_dependency(%q<gettext>, ["2.3.9"])
       s.add_runtime_dependency(%q<rspec>, ["1.3.2"])
     else
       s.add_dependency(%q<haml>, ["3.1.3"])
       s.add_dependency(%q<rack>, ["1.3.4"])
       s.add_dependency(%q<compass>, ["0.11.1"])
-      s.add_dependency(%q<gettext>, ["2.1.0"])
+      s.add_dependency(%q<gettext>, ["2.3.9"])
       s.add_dependency(%q<rspec>, ["1.3.2"])
     end
   else
     s.add_dependency(%q<haml>, ["3.1.3"])
     s.add_dependency(%q<rack>, ["1.3.4"])
     s.add_dependency(%q<compass>, ["0.11.1"])
-    s.add_dependency(%q<gettext>, ["2.1.0"])
+    s.add_dependency(%q<gettext>, ["2.3.9"])
     s.add_dependency(%q<rspec>, ["1.3.2"])
   end
 end
