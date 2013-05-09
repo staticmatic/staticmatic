@@ -48,7 +48,7 @@ module StaticMatic
       locale_dir = File.expand_path(File.join @base.base_dir, 'locale')
       FileUtils.mkdir_p locale_dir
 
-      msgmerge = %w[--sort-output --no-location --no-wrap]
+      msgmerge = %w[--sort-output --no-location]
       GetText.update_pofiles(get_domain,
                              files_to_translate,
                              nil,
