@@ -6,7 +6,7 @@ command = ARGV[0]
 directory = ARGV[1]
 
 if !command || !directory
-  puts "Usage: #{$0} <build|setup|preview> <directory>"
+  puts "Usage: #{$0} <build|setup|preview|updatepo> <directory>"
   exit
 end
 

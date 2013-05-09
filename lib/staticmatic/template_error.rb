@@ -1,28 +1,28 @@
 class StaticMatic::TemplateError < StandardError
   SOURCE_CODE_RADIUS = 3
-  
+
   attr_reader :original_exception, :backtrace
 
   def initialize(template, original_exception)
     @template, @original_exception = template, original_exception
     @backtrace = original_exception.backtrace
-    
+
     if template
       @source = File.read(template)
-    else 
+    else
       @source = ""
     end
   end
-  
+
   # TODO: Replace 'haml|sass' with any registered engines
   def line_number
     @line_number ||= $2 if backtrace.find { |line| line =~ /\((haml|sass|scss)\)\:(\d+)/ }
   end
-  
+
   def filename
     @template
   end
-  
+
   def source_extract(indentation = 0)
     return "" unless num = line_number
     num = num.to_i

@@ -1,4 +1,4 @@
-module StaticMatic::HelpersMixin    
+module StaticMatic::HelpersMixin
   # Loads any helpers present in the helpers dir and mixes them into the template helpers
   def load_helpers
 

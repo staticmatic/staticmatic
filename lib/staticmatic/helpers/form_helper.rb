@@ -1,4 +1,3 @@
-
 module StaticMatic
   module Helpers
     module FormHelper
@@ -10,8 +9,7 @@ module StaticMatic
         options.merge!(:type => "text", :name => name, :value => value)
         tag(:input, options)
       end
-        
-        
+
       # Generate a form textarea
       #
       def text_area(name, value, options = {})

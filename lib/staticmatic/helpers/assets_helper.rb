@@ -1,9 +1,8 @@
-
 module StaticMatic
   module Helpers
     module AssetsHelper
       self.extend self
-      
+
       # Generates links to all stylesheets in the source directory
       # = stylesheets
       # or specific stylesheets in a specific order
@@ -25,11 +24,10 @@ module StaticMatic
           # no specific files requested so include all in no particular order
           stylesheet_dir = File.join(@staticmatic.src_dir, 'stylesheets')
           stylesheet_directories = Dir[File.join(stylesheet_dir, '**','*.{sass,scss}')]
-          
+
           # Bit of a hack here - adds any stylesheets that exist in the site/ dir that haven't been generated from source sass
           Dir[File.join(@staticmatic.site_dir, 'stylesheets', '*.css')].each do |filename|
             search_filename = File.basename(filename).chomp(File.extname(filename))
-            puts search_filename
             already_included = false
             stylesheet_directories.each do |path|
               if File.basename(path).include?(search_filename)
@@ -37,20 +35,20 @@ module StaticMatic
                 break
               end
             end
-            
+
             stylesheet_directories << filename unless already_included
           end
 
           stylesheet_directories.each do |path|
-            
+
             filename_without_extension = File.basename(path).chomp(File.extname(path))
-            
+
             if !filename_without_extension.match(/^\_/)
-              
+
               path = path.gsub(/#{@staticmatic.src_dir}/, "").
-                          gsub(/#{@staticmatic.site_dir}/, "").
-                          gsub(/#{filename_without_extension}\.(sass|scss|css)/, "")
-                          
+                gsub(/#{@staticmatic.site_dir}/, "").
+                gsub(/#{filename_without_extension}\.(sass|scss|css)/, "")
+
               options[:href] = File.join(relative_path, path, "#{filename_without_extension}.css")
               output << tag(:link, options)
             end
@@ -59,21 +57,21 @@ module StaticMatic
           #specific files requested and in a specific order
           params.each do |file|
             if File.exist?(File.join(@staticmatic.src_dir, 'stylesheets', "#{file}.sass")) ||
-               File.exist?(File.join(@staticmatic.src_dir, 'stylesheets', "#{file}.scss")) || 
-               File.exist?(File.join(@staticmatic.site_dir, 'stylesheets', "#{file}.css"))
+                File.exist?(File.join(@staticmatic.src_dir, 'stylesheets', "#{file}.scss")) ||
+                File.exist?(File.join(@staticmatic.site_dir, 'stylesheets', "#{file}.css"))
               options[:href] = File.join(relative_path, "stylesheets", "#{file}.css")
               output << tag(:link, options)
             end
           end
         end
-        
+
         output
       end
-      
+
       # Generate javascript source tags for the specified files
       #
       # javascripts('test')   ->   <script language="javascript" src="javascripts/test.js"></script>
-      #    
+      #
       def javascripts(*files)
         relative_path = current_page_relative_path
 
@@ -87,7 +85,7 @@ module StaticMatic
       end
 
       # Generates an image tag always relative to the current page unless absolute path or http url specified.
-      # 
+      #
       # img('test_image.gif')   ->   <img src="/images/test_image.gif" alt="Test image"/>
       # img('contact/test_image.gif')   ->   <img src="/images/contact/test_image.gif" alt="Test image"/>
       # img('http://localhost/test_image.gif')   ->   <img src="http://localhost/test_image.gif" alt="Test image"/>

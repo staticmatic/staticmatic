@@ -2,7 +2,7 @@ module StaticMatic
   module Helpers
     module UrlHelper
       self.extend self
-      
+
       # Generate an HTML link
       #
       # If only the title is passed, it will automatically
@@ -28,7 +28,7 @@ module StaticMatic
         end
 
         options[:href] = "#{current_page_relative_path(href)}#{href}"
-        
+
         local_page = (options[:href].match(/^(\#|.+?\:)/) == nil)
         unless @staticmatic.configuration.use_extensions_for_page_links || !local_page
           options[:href].chomp!(".html")
@@ -47,13 +47,12 @@ module StaticMatic
       #
       def urlify(string)
         string.tr(" ", "_").
-               sub("&", "and").
-               sub("@", "at").
-               tr("^A-Za-z0-9_", "").
-               sub(/_{2,}/, "_").
-               downcase
+          sub("&", "and").
+          sub("@", "at").
+          tr("^A-Za-z0-9_", "").
+          sub(/_{2,}/, "_").
+          downcase
       end
     end
   end
-
 end

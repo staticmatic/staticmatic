@@ -3,19 +3,17 @@ module StaticMatic
     def initialize(staticmatic, default = nil)
       @files = default || Rack::File.new(staticmatic.site_dir)
       @staticmatic = staticmatic
-      
-
     end
 
     def call(env)
       @staticmatic.load_helpers
       path_info = env["PATH_INFO"]
 
-      file_dir, file_name, file_ext = expand_path(path_info)
+      locale, file_dir, file_name, file_ext = expand_path(path_info)
 
       # remove stylesheets/ directory if applicable
       file_dir.gsub!(/^\/stylesheets\/?/, "")
-      
+
       file_dir = CGI::unescape(file_dir)
       file_name = CGI::unescape(file_name)
 
@@ -32,7 +30,20 @@ module StaticMatic
         if file_ext == "css"
           res.write @staticmatic.generate_css(file_name, file_dir)
         else
+          if locale != ""
+            @staticmatic.translation.prepare
+            @staticmatic.translation.disable_caching
+            @staticmatic.translation.current_locale = locale
+          end
+
+          # Call generator_sitemap through all the pages
+          @staticmatic.generate_site_map
+
+          # Write in the stdout the current path
           res.write @staticmatic.generate_html_with_layout(file_name, file_dir)
+
+          # Clear the hash to the next access
+          @staticmatic.site_map.clear
         end
       rescue StaticMatic::Error => e
         res.write e.message
@@ -45,20 +56,20 @@ module StaticMatic
     def self.start(staticmatic)
       [ 'INT', 'TERM' ].each do |signal|
         Signal.trap(signal) do
-          puts 
+          puts
           puts "Exiting"
           exit!(0)
         end
       end
-      port = staticmatic.configuration.preview_server_port || 3000
 
+      port = staticmatic.configuration.preview_server_port || 3000
       host = staticmatic.configuration.preview_server_host || ""
 
       app = Rack::Builder.new do
         use Rack::ShowExceptions
         run StaticMatic::Server.new(staticmatic)
-      end 
-      
+      end
+
       Rack::Handler::WEBrick.run(app, :Port => port, :Host => host)
     end
 
@@ -66,6 +77,11 @@ module StaticMatic
 
     def expand_path(path_info)
       dirname, basename = File.split(path_info)
+      if @staticmatic.translation.should_translate?
+        locale, dirname = get_locale_from_dirpath(dirname)
+      else
+        locale = ""
+      end
 
       extname = File.extname(path_info).sub(/^\./, '')
       filename = basename.chomp(".#{extname}")
@@ -80,7 +96,16 @@ module StaticMatic
         extname = 'html'
       end
 
-      [ dirname, filename, extname ]
+      [ locale, dirname, filename, extname ]
+    end
+
+    def get_locale_from_dirpath(path)
+      locale, html_file = path[1..-1].split("/", 2)
+      if @staticmatic.translation.available_locales.include? locale
+        return locale.to_s, "/"+html_file.to_s
+      else
+        return "", path
+      end
     end
   end
 end
