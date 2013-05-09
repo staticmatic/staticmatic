@@ -2,7 +2,8 @@
 
 Gem::Specification.new do |s|
   s.name = %q{staticmatic}
-  s.version = "0.11.0"
+  load 'lib/staticmatic/version.rb'
+  s.version = StaticMatic::VERSION
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Stephen Bartholomew"]

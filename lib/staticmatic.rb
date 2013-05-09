@@ -15,9 +15,7 @@ require 'gettext/tools'
 require 'gettext/tools/rgettext'
 require 'gettext/tools/parser/ruby'
 
-module StaticMatic
-  VERSION = "0.11.0"
-end
+load 'staticmatic/version.rb'
 
 ["render", "build", "setup", "server", "helpers", "sitemap", "rescue", "updatepo"].each do |mixin|
   require File.join(File.dirname(__FILE__), "staticmatic", "mixins", mixin)
